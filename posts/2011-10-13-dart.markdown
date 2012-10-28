@@ -1,0 +1,100 @@
+---
+title:  Darting around
+author: Jonas Westerlund
+tags:   clang, dart, javascript, llvm, mac, xcode
+---
+
+Collecting some stuff I come across while trying out [Dart](http://www.dartlang.org/).
+Post will be updated with findings, thoughts and stuff.
+
+## Static runtime binaries
+
+Building Dart currently does not work out of the box on Mac OS X 10.7. But never fear, binaries are here.
+
+- [Debug ia32](/files/dart/Debug_ia32/dart)
+- [Release ia32](/files/dart/Release_ia32/dart)
+
+I will add x64 binaries as soon as they work.
+
+## Notes on building
+
+If you want to build your own Dart on Mac OS X 10.7, add another option to the list in `build.py` on line 108, it will look something like this.
+
+```python
+args = ['xcodebuild',
+        '-sdk',
+        'macosx10.6',
+        (...)
+        ]
+```
+ 
+You will also need Java. If you would rather not install that, see above.
+
+Since Xcode 4.2, you also need to change the compiler used, in `configurations_xcode.gypi`. Change the line that reads `'GCC_VERSION': '4.2'` to `'GCC_VERSION': 'com.apple.compilers.llvmgcc42`.
+
+Remember to run `gclient runhooks` after this, to re-generate the files needed.
+
+Now you should be able to run `build.py --arch=ia32 --mode=release` to build the release binaries.
+
+## Links
+
+- [Official website](http://dartlang.org/)
+- [Project at Google Code](https://code.google.com/p/dart/)
+- [Google Groups](https://groups.google.com/a/dartlang.org/)
+- [Language specification](http://dartlang.org/docs/spec/dartLangSpec.pdf)
+
+## Dartboard
+
+Couldn't find any documentation for this, but it seems you just need to include the [script](http://try-dart-lang.appspot.com/dartboard.dart.app.js) and add the class name `codes` to some element(s).
+
+<div class="codes"></div>
+
+<style>
+.codes {
+    display: block;
+    width: 100%;
+    min-height: 150px;
+    /* width: 600px;
+    height: 300px; */
+    white-space: pre;
+    font-family: monospace;
+    font-size: 11pt;
+    padding-bottom: 34px; /* hack to avoid scrollbars */
+    border: 1px solid #ddd;
+}
+
+div.explanation {
+    border: solid 1px #aaa;
+    padding: 0 1em;
+    margin: 1em 0;
+    height: 400px;
+    overflow: auto;
+}
+.upgrade {
+    margin-top: -1px;
+    color: #fff;
+    background: rgb(35, 63, 89);
+    border: 1px solid #aaa;
+    font-size: 11pt;
+    padding: 4px;
+}
+
+.upgrade a {
+    color: #fff;
+}
+
+button { font-size: 100%; }
+.db-view { line-height: initial; }
+</style>
+<script src="http://try-dart-lang.appspot.com/dartboard.dart.app.js"></script>
+
+## A year later
+
+After taking Dart for a spin, reading the documentation and specification, and trying out the major features of the language, I had no desire to make further use this language.
+Checking in on it every now and then for the past year has not changed this initial conclusion.
+
+While it is certainly more well-designed than JavaScript, that's not exactly a major accomplishment.
+I say that not to ridicule JavaScript; anyone expecting greatness [in ten days](http://www.jwz.org/blog/2010/10/every-day-i-learn-something-new-and-stupid/#comment-1021) is deluding themselves.
+I don't feel that it's even a big enough improvement to warrant the cost of switching, in the unlikely event of major adoption by the big browsers.
+
+For use outside of browsers, it feels like a step back compared to many contemporary languages, and doesn't really offer anything unique or compelling to make up for it.
