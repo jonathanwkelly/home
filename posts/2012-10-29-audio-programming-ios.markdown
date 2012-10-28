@@ -160,7 +160,7 @@ I have not yet made any attempt to find the optimal rate, so I currently update 
 [Low-frequency oscillators](http://en.wikipedia.org/wiki/Low-frequency_oscillation) and other components can also run at a much slower rate without degrading perceived sound quality.
 
 After a few slow and messy envelope implementations, I came up with a pretty nice reformulation.
-For a standard 4-stage [ADSR envelope](http://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope), I used 4 pairs of `unsigned short`, for each pair of level and amplitude.
+For a standard 4-stage [ADSR envelope](http://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope), I used 4 pairs of `unsigned short`, for each pair of level and rate.
 For the rate, I made sure that `0 < rate <= MAX`, where `MAX` is `1` (or `1 << 12` in my representation).
 This lets them perform everything from super slow to instant transitions.
 Updating the envelope then just involves incrementing the current value with the difference of the target level and itself, multiplied by the rate.
