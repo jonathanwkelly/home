@@ -71,11 +71,11 @@ status = AudioUnitSetProperty(audioComponent,
 
 NSAssert(status == noErr, @"Error setting stream format: %li", status);
 
-// .inputProc is a function that receives a list of audio buffers, that it must fill with samples
-// .inputProcRefCon can be a pointer to some object that you want to use in your .inputProc function
 AURenderCallbackStruct callback = {
-  .inputProc        = &RenderTone,
-  .inputProcRefCon  = (__bridge void*)self
+  // This function receives a list of audio buffers to be filled with samples
+  .inputProc        = &synth_produce_samples
+  // This is a pointer to some object you want to use in aforementioned function
+  .inputProcRefCon  = synthesizer
 };
 
 status = AudioUnitSetProperty(audioComponent,
@@ -98,12 +98,12 @@ That's it, now all you need to do is generate some sample data in the `RenderTon
 To illustrate the fundamental idea, here's an example that outputs silence:
 
 ```c
-OSStatus RenderTone(void* irc, AudioUnitRenderActionFlags* flags,
-                    const AudioTimeStamp* ts, unsigned long bname,
-                    unsigned long framec, AudioBufferList* data) {
-  // `irc` is that `inputProcRefCon` from earlier
-  int* buf = data->mBuffers[0].mData;
-  // We are being asked for `framec` samples, that shall be put in the audio buffer
+OSStatus synth_produce_samples(void *irc, AudioUnitRenderActionFlags *flags,
+                               const AudioTimeStamp *ts, unsigned long bus,
+                               unsigned long framec, AudioBufferList *data) {
+  // `irc` is the value of `.inputProcRefCon` from before
+  int *buf = data->mBuffers[0].mData;
+  // We are being asked to put `framec` samples in the audio buffer
   for (int i = 0; i < framec; ++i)
     buf[i] = 0;
   return noErr;
@@ -161,7 +161,7 @@ I have not yet made any attempt to find the optimal rate, so I currently update 
 
 After a few slow and messy envelope implementations, I came up with a pretty nice reformulation.
 For a standard 4-stage [ADSR envelope](http://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope), I used 4 pairs of `unsigned short`, for each pair of level and rate.
-For the rate, I made sure that `0 < rate <= MAX`, where `MAX` is `1` (or `1 << 12` in my representation).
+For the rate, I made sure that `0 < rate <= MAX`, where `MAX` is the maximum level (`1 << 12` in my representation).
 This lets them perform everything from super slow to instant transitions.
 Updating the envelope then just involves incrementing the current value with the difference of the target level and itself, multiplied by the rate.
 This works for both positive and negative slopes, and when the envelope goes from a partial release to attack and things like that.
