@@ -163,7 +163,7 @@ After a few slow and messy envelope implementations, I came up with a pretty nic
 For a standard 4-stage [ADSR envelope](http://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope), I used 4 pairs of `unsigned short`, for each pair of level and rate.
 For the rate, I made sure that `0 < rate <= MAX`, where `MAX` is the maximum level (`1 << 12` in my representation).
 This lets them perform everything from super slow to instant transitions.
-Updating the envelope then just involves incrementing the current value with the difference of the target level and itself, multiplied by the rate.
+Updating the envelope then just involves incrementing the current value with the rate, until it reaches the target level.
 This works for both positive and negative slopes, and when the envelope goes from a partial release to attack and things like that.
 When the increment is 0, the envelope proceeds to the next stage, with the exception of sustain, which only proceeds when the key is released.
 
