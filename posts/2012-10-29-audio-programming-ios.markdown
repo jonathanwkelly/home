@@ -159,13 +159,17 @@ With 12 bits of amplitude, updating it 44100 times per second seems a bit excess
 I have not yet made any attempt to find the optimal rate, so I currently update it every 256th sample, which sounds good and is easy to implement.
 [Low-frequency oscillators](http://en.wikipedia.org/wiki/Low-frequency_oscillation) and other components can also run at a much slower rate without degrading perceived sound quality.
 
-After a few slow and messy envelope implementations, I came up with a pretty nice reformulation.
-For a standard 4-stage [ADSR envelope](http://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope), I used 4 pairs of `unsigned short`, for each pair of level and rate.
-For the rate, I made sure that `0 < rate <= MAX`, where `MAX` is the maximum level (`1 << 12` in my representation).
-This lets them perform everything from super slow to instant transitions.
-Updating the envelope then just involves incrementing the current value with the rate, until it reaches the target level.
+After a few slow and messy [ADSR envelope](http://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope) implementations, I came up with a pretty nice reformulation: instead of durations, use rates.
+Ensure that `0 < rate <= MAX`, where `MAX` is the maximum level (`1 << 12` in my representation).
+This lets the envelope perform everything from super slow to instant transitions, and updating it just involves incrementing the current value with the rate, until it reaches the target level.
 This works for both positive and negative slopes, and when the envelope goes from a partial release to attack and things like that.
-When the increment is 0, the envelope proceeds to the next stage, with the exception of sustain, which only proceeds when the key is released.
+When the target level is reached, the envelope proceeds to the next stage, with the exception of sustain, which only proceeds when the key is released.
+
+<strong id="env-update">Update</strong>: came up with another implementation that I like better.
+Always increment/decrement the level by 1, and let the rate be the number of samples between envelope updates.
+This way, slower transitions will cause the envelope to update less frequently, while fast ones will sound better.
+It will also ensure that the envelope always hits the target level exactly, simplifying conditionals.
+For the highest rates, shift the increment so that the fastest rate is an instant transition.
 
 To get a nice and fast logarithmic curve, you can make use of the ARM [CLZ](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0068b/CIHJGJED.html) instruction, available in both Clang and GCC in the form of `int __builtin_clz(unsigned int x)`.
 
