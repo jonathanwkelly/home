@@ -3,42 +3,72 @@
     font-family: "Source Sans Pro";
     font-style: normal;
     font-weight: 400;
-    src: local("Source Sans Pro"), local("SourceSansPro-Regular"), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v4/ODelI1aHBYDBqgeIAH2zlNHq-FFgoDNV3GTKpHwuvtI.woff) format("woff");
+    src: url("../fonts/SourceSansPro-Regular-webfont.eot");
+    src: local("Source Sans Pro"), local("SourceSansPro-Regular"),
+         url("../fonts/SourceSansPro-Regular-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/SourceSansPro-Regular-webfont.woff") format("woff"),
+         url("../fonts/SourceSansPro-Regular-webfont.ttf") format("truetype"),
+         url("../fonts/SourceSansPro-Regular-webfont.svg#SourceSansProRegular") format("svg");
   }
 
   @font-face {
     font-family: "Source Sans Pro";
     font-style: normal;
     font-weight: 700;
-    src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v4/toadOcfmlt9b38dHJxOBGIqjGYJUyOXcBwUQbRaNH6c.woff) format("woff");
+    src: url("../fonts/SourceSansPro-Bold-webfont.eot");
+    src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"),
+         url("../fonts/SourceSansPro-Bold-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/SourceSansPro-Bold-webfont.woff") format("woff"),
+         url("../fonts/SourceSansPro-Bold-webfont.ttf") format("truetype"),
+         url("../fonts/SourceSansPro-Bold-webfont.svg#SourceSansProBold") format("svg");
   }
 
   @font-face {
     font-family: "Source Sans Pro";
     font-style: italic;
     font-weight: 400;
-    src: local("Source Sans Pro Italic"), local("SourceSansPro-It"), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v4/M2Jd71oPJhLKp0zdtTvoM_bce-VcyLJMRR1FC9qWbU8.woff) format("woff");
+    src: url("../fonts/SourceSansPro-It-webfont.eot");
+    src: local("Source Sans Pro Italic"), local("SourceSansPro-It"),
+         url("../fonts/SourceSansPro-It-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/SourceSansPro-It-webfont.woff") format("woff"),
+         url("../fonts/SourceSansPro-It-webfont.ttf") format("truetype"),
+         url("../fonts/SourceSansPro-It-webfont.svg#SourceSansProIt") format("svg");
   }
 
   @font-face {
     font-family: "Source Sans Pro";
     font-style: italic;
     font-weight: 700;
-    src: local("Source Sans Pro Bold Italic"), local("SourceSansPro-BoldIt"), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v4/fpTVHK8qsXbIeTHTrnQH6PgYMAt3u4NmhhzLLLPJ5qH3rGVtsTkPsbDajuO5ueQw.woff) format("woff");
+    src: url("../fonts/SourceSansPro-BoldIt-webfont.eot");
+    src: local("Source Sans Pro Bold Italic"), local("SourceSansPro-BoldIt"),
+         url("../fonts/SourceSansPro-BoldIt-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/SourceSansPro-BoldIt-webfont.woff") format("woff"),
+         url("../fonts/SourceSansPro-BoldIt-webfont.ttf") format("truetype"),
+         url("../fonts/SourceSansPro-BoldIt-webfont.svg#SourceSansProBoldIt") format("svg");
   }
 
   @font-face {
     font-family: "Source Code Pro";
     font-style: normal;
     font-weight: 400;
-    src: local("Source Code Pro"), local("SourceCodePro-Regular"), url(http://themes.googleusercontent.com/static/fonts/sourcecodepro/v1/mrl8jkM18OlOQN8JLgasD9Hq-FFgoDNV3GTKpHwuvtI.woff) format("woff");
+    src: url("../fonts/SourceCodePro-Regular-webfont.eot");
+    src: local("Source Code Pro"), local("SourceCodePro-Regular"),
+         url("../fonts/SourceCodePro-Regular-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/SourceCodePro-Regular-webfont.woff") format("woff"),
+         url("../fonts/SourceCodePro-Regular-webfont.ttf") format("truetype"),
+         url("../fonts/SourceCodePro-Regular-webfont.svg#SourceCodeProRegular") format("svg");
   }
 
   @font-face {
     font-family: "Source Code Pro";
     font-style: normal;
     font-weight: 700;
-    src: local("Source Code Pro Bold"), local("SourceCodePro-Bold"), url(http://themes.googleusercontent.com/static/fonts/sourcecodepro/v1/leqv3v-yTsJNC7nFznSMqYqjGYJUyOXcBwUQbRaNH6c.woff) format("woff");
+    src: url("../fonts/SourceCodePro-Bold-webfont.eot");
+    src: local("Source Code Pro Bold"), local("SourceCodePro-Bold"),
+         url("../fonts/SourceCodePro-Bold-webfont.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/SourceCodePro-Bold-webfont.woff") format("woff"),
+         url("../fonts/SourceCodePro-Bold-webfont.ttf") format("truetype"),
+         url("../fonts/SourceCodePro-Bold-webfont.svg#SourceCodeProBold") format("svg");
   }
 }
 

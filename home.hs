@@ -75,4 +75,4 @@ tagIdentifier = fromCapture "tags/*"
 -- All static assetts
 staticFiles = do
   match "css/*" $ route idRoute >> compile compressCssCompiler
-  forM_ ["img/**", "js/**", "files/**"] . flip match $ route idRoute >> compile copyFileCompiler
+  forM_ ["fonts/**", "img/**", "js/**", "files/**"] . flip match $ route idRoute >> compile copyFileCompiler
