@@ -1,7 +1,7 @@
 ---
 title:  A beginner’s experience with iOS audio programming
 author: Jonas Westerlund
-tags:   ios, c, objective-c, audio, fm, synthesis
+tags:   audio, c, fixed-point, fm, ios, objective-c, synthesis
 ---
 
 I have long wanted to create a musical synthesizer of some kind, for iOS.
@@ -175,7 +175,7 @@ This lets the envelope perform everything from super slow to instant transitions
 This works for both positive and negative slopes, and when the envelope goes from a partial release to attack and things like that.
 When the target level is reached, the envelope proceeds to the next stage, with the exception of sustain, which only proceeds once the key is released.
 
-<span id="env-update" class="updated">Update:</span>
+<span class="updated">Updated <time datetime="2012-11-06">november 6, 2012</time>:</span>
 I came up with another implementation that I like better.
 Rather than incrementing the level by rate, always increment by 1, and let the rate be the number of samples between envelope updates.
 This way, slower transitions will cause the envelope to update less frequently, while fast ones will update often and sound better.

@@ -277,8 +277,6 @@ article {
     position: absolute;
   }
 
-time { text-transform: lowercase; }
-
 p.meta {
   color: hsl(0, 0%, 50%);
   font-size: 14px;
