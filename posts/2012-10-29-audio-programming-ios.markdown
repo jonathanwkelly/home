@@ -170,6 +170,7 @@ With 12 bits of amplitude, updating it 44100 times per second seems a bit excess
 
 After a few slow and messy [ADSR envelope](http://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope) implementations, I came up with a pretty nice reformulation.
 Instead of each stage having a duration, it has a rate of change.
+Yes, it's the same thing, but at least for me it helped to forget about the actual durations.
 With this implementation, we only need to ensure that `0 < rate <= MAX`.
 This lets the envelope perform everything from super slow to instant transitions, and updating it just involves incrementing the current value with the rate, until it reaches the target level.
 This works for both positive and negative slopes, and when the envelope goes from a partial release to attack and things like that.

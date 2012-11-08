@@ -125,13 +125,12 @@ h2 {
   font-size: 20px;
 }
 
-* + h2 {
+* + h2, h3 {
   margin-top: 50px;
 }
 
 h3 {
   font-size: 18px;
-  margin-top: 35px;
 }
 
 dl, p, ul {
@@ -159,7 +158,7 @@ header {
     display: inline-block;
     font-family: "Source Code Pro", "Menlo", monospace;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 400;
     margin-top: 0;
   }
     header p a {
@@ -171,7 +170,6 @@ header {
     }
       header p span {
         display: inline-block;
-        font-weight: 400;
         margin-left: 1ex;
         -moz-transition: color 200ms, margin 200ms;
         -ms-transition: color 200ms, margin 200ms;
@@ -186,7 +184,7 @@ header {
         color: hsla(0, 0%, 40%, 0);
       }
       header p a:hover span:last-child {
-        color: hsla(0, 0%, 40%, .5);
+        color: hsla(0, 0%, 40%, 1);
       }
 
 section {
