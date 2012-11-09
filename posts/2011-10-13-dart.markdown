@@ -1,7 +1,8 @@
 ---
-title:  Darting around
-author: Jonas Westerlund
-tags:   clang, dart, javascript, llvm, mac, xcode
+title:        Darting around
+description:  Trying out Google’s new programming language on OS X
+author:       Jonas Westerlund
+tags:         clang, dart, javascript, llvm, mac, xcode
 ---
 
 Collecting some stuff I come across while trying out [Dart](http://www.dartlang.org/).

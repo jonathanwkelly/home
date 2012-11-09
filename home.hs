@@ -9,6 +9,7 @@ import System.FilePath  (takeFileName)
 
 import Prelude hiding (id)
 import Hakyll
+import Hakyll.Web.Feed
 
 main = hakyll $ do
   -- Render index page
@@ -26,6 +27,9 @@ main = hakyll $ do
     >>> requireAllA "posts/*" postList
     >>> applyTemplateCompiler "templates/postlist.html"
     >>> applyTemplateCompiler "templates/default.html"
+
+  match "rss.xml" $ route idRoute
+  create "rss.xml" $ requireAll_ "posts/*" >>> renderRss feedConfiguration
 
   -- Render all blog posts
   match "posts/*" $ do
@@ -76,3 +80,11 @@ tagIdentifier = fromCapture "tags/*"
 staticFiles = do
   match "css/*" $ route idRoute >> compile compressCssCompiler
   forM_ ["fonts/**", "img/**", "js/**", "files/**"] . flip match $ route idRoute >> compile copyFileCompiler
+
+feedConfiguration = FeedConfiguration
+  { feedTitle       = "Jonas Westerlund’s blog"
+  , feedDescription = "Personal blog of Jonas Westerlund"
+  , feedAuthorName  = "Jonas Westerlund"
+  , feedAuthorEmail = "jonas.westerlund@icloud.com"
+  , feedRoot        = "http://jonaswesterlund.se"
+  }
