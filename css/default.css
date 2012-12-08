@@ -85,24 +85,12 @@ html {
 }
 
 body {
-  -moz-box-orient: vertical;
-  -ms-box-orient: vertical;
-  -o-box-orient: vertical;
-  -webkit-box-orient: vertical;
-  box-orient: vertical;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  display: -moz-box;
-  display: -ms-box;
-  display: -o-box;
-  display: -webkit-box;
-  display: box;
   margin: 0 auto;
   max-width: 42em;
   min-height: 100%;
+  padding-bottom: 86px;
+  position: relative;
 }
 
 h1, h2, h3, h4, header {
@@ -110,6 +98,10 @@ h1, h2, h3, h4, header {
   cursor: default;
   font-family: "Source Sans Pro", "Helvetica Neue", "Arial", sans-serif;
   font-weight: 600;
+}
+
+header p, code, a[href^="/tag"]::before {
+  font-family: "Source Code Pro", "Menlo", monospace;
 }
 
 h1 {
@@ -139,7 +131,6 @@ dl, p, ul {
 
 ul {
   list-style: none;
-  padding: 0;
 }
 
 a {
@@ -156,7 +147,6 @@ header {
 }
   header p {
     display: inline-block;
-    font-family: "Source Code Pro", "Menlo", monospace;
     font-size: 14px;
     font-weight: 400;
     margin-top: 0;
@@ -190,17 +180,15 @@ header {
 section {
   padding: 25px;
 }
-section:last-of-type {
-  -moz-box-flex: 2;
-  -ms-box-flex: 2;
-  -webkit-box-flex: 2;
-  box-flex: 2;
-}
 
 footer {
+  bottom: 0;
   color: hsl(0, 0%, 60%);
   font-size: 14px;
+  left: 0;
   padding: 40px 25px 25px;
+  position: absolute;
+  right: 0;
 }
   footer p:last-child { margin: 0; }
     footer p a {
@@ -212,7 +200,6 @@ footer {
 
 code {
   background: hsla(0, 0%, 0%, 0.075);
-  font-family: "Source Code Pro", "Menlo", monospace;
   font-size: 14px;
 }
 
@@ -289,7 +276,6 @@ p.meta {
   p.meta a[href^="/tag"]::before {
     color: hsl(0, 0%, 60%);
     content: "#";
-    font-family: "Source Code Pro", "Menlo", monospace;
   }
 
 .updated {
