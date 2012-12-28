@@ -77,10 +77,16 @@
   padding: 0;
 }
 
+html, h1, h2, h3, h4, .co {
+  font-family: "Source Sans Pro", "Lucida Grande", "Arial", sans-serif;;
+}
+
 html {
   background-color: hsl(0, 0, 95%);
   color: hsl(0, 0%, 40%);
-  font: 400 16px/25px "Source Sans Pro", "Lucida Grande", "Arial", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 25px;
   height: 100%;
 }
 
@@ -89,14 +95,13 @@ body {
   margin: 0 auto;
   max-width: 42em;
   min-height: 100%;
-  padding-bottom: 86px;
+  padding-bottom: 75px;
   position: relative;
 }
 
 h1, h2, h3, h4, header {
   color: hsl(0, 0%, 30%);
   cursor: default;
-  font-family: "Source Sans Pro", "Helvetica Neue", "Arial", sans-serif;
   font-weight: 600;
 }
 
@@ -105,7 +110,7 @@ header p, code, a[href^="/tag"]::before {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 25px;
   margin: 0 0 25px;
 }
   h1 a { color: inherit; }
@@ -114,7 +119,7 @@ h1 {
   }
 
 h2 {
-  font-size: 20px;
+  font-size: 21px;
 }
 
 * + h2, h3 {
@@ -122,7 +127,7 @@ h2 {
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 19px;
 }
 
 dl, p, ul {
@@ -143,13 +148,14 @@ a:hover {
 }
 
 header {
+  height: 25px;
   padding: 25px;
 }
   header p {
     display: inline-block;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
-    margin-top: 0;
+    margin: 0;
   }
     header p a {
       color: hsl(0, 0%, 40%);
@@ -184,9 +190,9 @@ section {
 footer {
   bottom: 0;
   color: hsl(0, 0%, 60%);
-  font-size: 14px;
+  font-size: 13px;
   left: 0;
-  padding: 40px 25px 25px;
+  padding: 25px;
   position: absolute;
   right: 0;
 }
@@ -301,46 +307,47 @@ td.lineNumbers {
 td.sourceCode {
   padding-left: 5px;
 }
-code span.kw {
+.kw {
   color: hsl(210, 80%, 40%);
   font-weight: 600;
 }
-code span.dt {
+.dt {
   color: hsl(300, 60%, 40%);
 }
-code span.dv {
+.dv {
   color: #40a070;
 }
-code span.bn {
+.bn {
   color: #40a070;
 }
-code span.fl {
+.fl {
   color: #40a070;
 }
-code span.ch {
+.ch {
   color: #4070a0;
 }
-code span.st {
+.st {
   color: #4070a0;
 }
-code span.co {
+.co {
   color: #60a0b0;
+  font-size: 15px;
   font-style: italic;
 }
-code span.ot {
+.ot {
   color: hsl(0, 0%, 60%);
 }
-code span.al {
+.al {
   color: red;
   font-weight: 600;
 }
-code span.fu {
+.fu {
   color: hsl(0, 0%, 40%);
   font-weight: 600;
 }
-code span.re {
+.re {
 }
-code span.er {
+.er {
   color: red;
   font-weight: 600;
 }
