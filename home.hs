@@ -1,13 +1,11 @@
 {-# LANGUAGE ExplicitForAll, OverloadedStrings, UnicodeSyntax #-}
 
-import Control.Applicative ((<$>))
+import Control.Monad (forM_)
 import Control.Monad.Unicode ((≫), (≫=))
 import Data.Char (isLetter)
 import Data.List.Unicode ((⧺))
 import Data.Monoid (mappend, mconcat)
-import Data.Monoid.Unicode ((∅))
 import Hakyll
-import Prelude (($), IO, String, const, dropWhile, flip, fmap, map, not, return, reverse, take)
 import Prelude.Unicode ((∘))
 import System.FilePath (takeFileName)
 
@@ -24,7 +22,6 @@ main = hakyllWith config $ do
     route   $ setExtension ".html" `composeRoutes` postRoute
     compile $ pandocCompiler
       ≫= saveSnapshot "content"
-      ≫= return ∘ fmap demoteHeaders
       ≫= loadAndApplyTemplate "templates/postmeta.html" (postContext tags)
       ≫= loadAndApplyTemplate "templates/post.html" (postContext tags)
       ≫= loadAndApplyTemplate "templates/default.html" (postContext tags)
@@ -70,16 +67,15 @@ main = hakyllWith config $ do
   create ["rss.xml"] $ do
     route idRoute
     compile $ do
-      posts ← recentFirst <$> loadAllSnapshots "posts/*" "content"
+      posts ← recentFirst `fmap` loadAllSnapshots "posts/*" "content"
       renderRss feedConfiguration feedContext posts
 
-  match "templates/*" ∘ compile $ templateCompiler
-  match "pages/*" ∘ compile $ templateCompiler
+  forM_ ["templates/*", "pages/*"] $ flip match $ compile templateCompiler
 
 postList ∷ Tags → Pattern → ([Item String] → [Item String]) → Compiler String
 postList tags pattern preprocess' = do
     postItemTpl ← loadBody "templates/postitem.html"
-    posts       ← preprocess' <$> loadAll pattern
+    posts       ← preprocess' `fmap` loadAll pattern
     applyTemplateList postItemTpl (postContext tags) posts
 
 postContext ∷ Tags → Context String
