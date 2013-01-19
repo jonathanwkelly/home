@@ -233,7 +233,7 @@ article {
 p.meta {
   margin-top: 50px;
 }
-  p.meta a[href^="/tag"]::before {
+  p.meta a[href*="/tag/"]::before {
     color: #000;
     content: "#";
   }
