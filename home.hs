@@ -1,10 +1,11 @@
 {-# LANGUAGE ExplicitForAll, OverloadedStrings, UnicodeSyntax #-}
 
 import Control.Monad (forM_)
-import Control.Monad.Unicode ((≫), (≫=))
+import Control.Monad.Unicode ((≫), (≫=), (=≪))
 import Data.Char (isLetter)
 import Data.List.Unicode ((⧺))
-import Data.Monoid (mappend, mconcat)
+import Data.Monoid (mconcat)
+import Data.Monoid.Unicode ((⊕))
 import Hakyll
 import Prelude.Unicode ((∘))
 import System.FilePath (takeFileName)
@@ -16,7 +17,7 @@ main = hakyllWith config $ do
 
   match "css/**" $ route idRoute ≫ compile compressCssCompiler
 
-  tags ← buildTags "posts/*" (fromCapture "tag/*.html")
+  tags ← buildTags "posts/*" $ fromCapture "tag/*.html"
 
   match "posts/*" $ do
     route   $ setExtension ".html" `composeRoutes` postRoute
@@ -30,12 +31,10 @@ main = hakyllWith config $ do
   create ["posts.html"] $ do
     route idRoute
     compile $ do
-      list ← postList tags "posts/*" recentFirst
+      list ← postList tags "posts/*"
       makeItem ""
         ≫= loadAndApplyTemplate "templates/postlist.html"
-          (constField "title" "Posts" `mappend`
-            constField "posts" list `mappend`
-            defaultContext)
+          (constField "title" "Posts" ⊕ constField "posts" list ⊕ defaultContext)
         ≫= loadAndApplyTemplate "templates/default.html" defaultContext
         ≫= relativizeUrls
 
@@ -44,21 +43,19 @@ main = hakyllWith config $ do
     let title = "Posts tagged with " ⧺ tag
     route idRoute
     compile $ do
-      list ← postList tags pattern recentFirst
+      list ← postList tags pattern
       makeItem ""
         ≫= loadAndApplyTemplate "templates/postlist.html"
-            (constField "title" title `mappend`
-              constField "posts" list `mappend`
-              defaultContext)
+            (constField "title" title ⊕ constField "posts" list ⊕ defaultContext)
         ≫= loadAndApplyTemplate "templates/default.html" defaultContext
         ≫= relativizeUrls
 
   create ["index.html"] $ do
     route topRoute
     compile $ do
-      list ← postList tags "posts/*" $ take 10 ∘ recentFirst
+      list ← postList tags "posts/*"
       makeItem list
-      let indexContext = constField "posts" list `mappend` defaultContext
+      let indexContext = constField "posts" list ⊕ defaultContext
       makeItem ""
         ≫= loadAndApplyTemplate "pages/index.html" indexContext
         ≫= loadAndApplyTemplate "templates/default.html" indexContext
@@ -67,15 +64,15 @@ main = hakyllWith config $ do
   create ["rss.xml"] $ do
     route idRoute
     compile $ do
-      posts ← recentFirst `fmap` loadAllSnapshots "posts/*" "content"
+      posts ← recentFirst =≪ loadAllSnapshots "posts/*" "content"
       renderRss feedConfiguration feedContext posts
 
   forM_ ["templates/*", "pages/*"] $ flip match $ compile templateCompiler
 
-postList ∷ Tags → Pattern → ([Item String] → [Item String]) → Compiler String
-postList tags pattern preprocess' = do
+postList ∷ Tags → Pattern → Compiler String
+postList tags pattern = do
     postItemTpl ← loadBody "templates/postitem.html"
-    posts       ← preprocess' `fmap` loadAll pattern
+    posts       ← recentFirst =≪ loadAll pattern
     applyTemplateList postItemTpl (postContext tags) posts
 
 postContext ∷ Tags → Context String
@@ -83,7 +80,7 @@ postContext tags = mconcat
   [ modificationTimeField "mtime" "%U"
   , dateField "date" "%B %e, %Y"
   , dateField "isoDate" "%Y-%m-%d"
-  , tagsField "prettytags" tags
+  , tagsField "tags" tags
   , defaultContext
   ]
 
