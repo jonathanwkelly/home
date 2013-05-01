@@ -1,45 +1,18 @@
-@font-face {
-  font-family: "Source Code Pro";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/SourceCodePro-Regular-webfont.eot");
-  src: local("Source Code Pro"), local("SourceCodePro-Regular"),
-       url("../fonts/SourceCodePro-Regular-webfont.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/SourceCodePro-Regular-webfont.woff") format("woff"),
-       url("../fonts/SourceCodePro-Regular-webfont.ttf") format("truetype"),
-       url("../fonts/SourceCodePro-Regular-webfont.svg#SourceCodeProRegular") format("svg");
-}
-
-@font-face {
-  font-family: "Source Code Pro";
-  font-style: normal;
-  font-weight: 700;
-  src: url("../fonts/SourceCodePro-Bold-webfont.eot");
-  src: local("Source Code Pro Bold"), local("SourceCodePro-Bold"),
-       url("../fonts/SourceCodePro-Bold-webfont.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/SourceCodePro-Bold-webfont.woff") format("woff"),
-       url("../fonts/SourceCodePro-Bold-webfont.ttf") format("truetype"),
-       url("../fonts/SourceCodePro-Bold-webfont.svg#SourceCodeProBold") format("svg");
-}
-
 * {
   margin: 0;
   padding: 0;
 }
 
-html, a {
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAMAAACeL25MAAADAFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEBAQECAgIDAwMEBAQFBQUHBwcICAgKCgoMDAwODg4REREUFBQYGBgbGxv////////////////////////////////////////////////////////////////////////////////////////////+/v79/f36+vr39/fy8vLt7e3n5+fn5+fg4ODg4ODe3t7e3t7c3Nzb29vb29vZ2dnZ2dnX19fW1tbW1tbU1NTU1NTS0tLR0dHR0dHPz8/Nzc3Nzc3MzMzMzMzKysrJycnJycnHx8fHx8fFxcXExMTExMTCwsLBwcHBwcG/v7+/v7+9vb28vLy8vLy6urq5ubm5ubm3t7e2tra2tra0tLSysrKysrKxsbGxsbGvr6+urq6urq6srKyrq6urq6upqamoqKioqKimpqalpaWlpaWjo6OioqKioqKgoKCfn5+dnZ2dnZ2cnJybm5ubm5uZmZmYmJiYmJiWlpaVlZWTk5OTk5OSkpKRkZGRkZGPj4+Ojo6MjIyMjIyLi4uKioqKioqIiIiHh4eGhoaGhoaEhISDg4OBgYGBgYGAgIB/f39+fn5+fn58fHx7e3t6enp6enp4eHh3d3d2dnZ0dHR0dHRzc3NycnJxcXFvb29vb29ubm5tbW1sbGxqampqamppaWloaGhnZ2dmZmZkZGRkZGRjY2NiYmJhYWFgYGBeXl5dXV1dXV1cXFxbW1taWlpZWVlYWFhWVlZVVVVVVVVUVFRTU1NSUlJRUVFQUFBPT09OTk5NTU1MTExLS0tKSkpISEhHR0dGRkZFRUVERERDQ0NCQkJBQUFAQEA/Pz8+Pj4+Pj49PT08PDw7Ozs6Ojo5OTk4ODg3Nzc2NjY1NTUzMzMyMjIyMjIxMTEwMDAvLy8tLS0sLCwsLCwrKysqKiooKCgoKCgnJycmJiYkJCQkJCQjIyMhISEhISEfHx9VSTanAAAAIHRSTlMAAAAAAAABAgMFCAsPFhwmMTtGVV1veYWQnam3xNPh8eze2SgAAAATSURBVAjXY2DV1tZm0IYQrBAWABcYAmX3OKF1AAAAAElFTkSuQmCC");
-}
-
-header p a, header p a::before, header p a:hover, strike, code, pre code::before, .updated {
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAMAAACeL25MAAADAFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEDAwMICAgODg4UFBQYGBj////////////////////////////////////////////////////+/v7+/v79/f39/f38/Pz7+/v5+fn4+Pj39/f19fXz8/Px8fHw8PDu7u7s7Ozq6urn5+fl5eXi4uLg4ODe3t7e3t7c3Nzb29vb29vZ2dnZ2dnX19fW1tbW1tbU1NTU1NTS0tLR0dHR0dHPz8/Nzc3Nzc3MzMzMzMzKysrJycnJycnHx8fHx8fFxcXExMTExMTCwsLBwcHBwcG/v7+/v7+9vb28vLy8vLy6urq5ubm5ubm3t7e2tra2tra0tLSysrKysrKxsbGxsbGvr6+urq6urq6srKyrq6urq6upqamoqKioqKimpqalpaWlpaWjo6OioqKioqKgoKCfn5+dnZ2dnZ2cnJybm5ubm5uZmZmYmJiYmJiWlpaVlZWTk5OTk5OSkpKRkZGRkZGPj4+Ojo6MjIyMjIyLi4uKioqKioqIiIiHh4eGhoaGhoaEhISDg4OBgYGBgYGAgIB/f39+fn5+fn58fHx7e3t6enp6enp4eHh3d3d2dnZ0dHR0dHRzc3NycnJxcXFvb29vb29ubm5tbW1sbGxqampqamppaWloaGhnZ2dmZmZkZGRkZGRjY2NiYmJhYWFgYGBeXl5dXV1dXV1cXFxbW1taWlpZWVlYWFhWVlZVVVVVVVVUVFRTU1NSUlJRUVFQUFBPT09OTk5NTU1MTExLS0tKSkpISEhHR0dGRkZFRUVERERDQ0NCQkJBQUFAQEA/Pz8+Pj4+Pj49PT08PDw7Ozs6Ojo5OTk4ODg3Nzc2NjY1NTUzMzMyMjIyMjIxMTEwMDAvLy8tLS0sLCwsLCwrKysqKiooKCgoKCgnJycmJiYkJCQkJCQjIyMhISEhISEfHx8fHx9XP5zSAAAAH3RSTlMAAAAAAAAAAAAAAAAAAAAAAAAAAAEDBw8fN1mFr9PhuhBLZQAAABNJREFUCNdjUOXh4WHggRCqEBYACh4A84tzVyoAAAAASUVORK5CYII=");
-}
-
 html {
-  background-color: #e8e8e8;
-  color: #000;
-  font: 400 13px/25px "Source Code Pro", "Menlo", "Consolas", monospace;
+  background-color: hsl(0, 0%, 95%);
+  color: hsl(0, 0%, 10%);
+  font: 400 15px/25px "Georgia", serif;
   height: 100%;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 body {
@@ -51,42 +24,39 @@ body {
   position: relative;
 }
 
-h1, h2, h3, h4, header {
+h1, h2, h3, h4, header, footer, p.all, p.meta {
   cursor: default;
+  font-family: "Helvetica Neue", "Arial", sans-serif;
   font-size: inherit;
-  font-weight: 600;
 }
 
 h1 {
   margin: 0 0 25px;
   font-size: 25px;
-  font-weight: 300;
+  font-weight: 400;
 }
   h1 a { color: inherit; }
   h1 a:hover {
     color: hsl(0, 0%, 40%);
   }
 
-* + h2, h3 {
+h2, h3 {
+  font-weight: 600;
   margin-top: 50px;
 }
 
 h2 {
-  text-transform: uppercase;
+  font-size: 20px;
 }
 
 h3 {
   display: run-in;
-  margin-right: 15px;
+  font-weight: 500;
+  margin-right: 10px;
   text-transform: uppercase;
 }
 
 dl, p, ul {
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -o-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
   margin: 25px 0;
 }
 
@@ -95,15 +65,21 @@ ul {
 }
 
 a {
-  background-color: #00b456;
-  color: inherit;
+  color: hsl(205, 50%, 40%);
   text-decoration: none;
-  text-shadow: 0 0 5px #fff;
 }
 
 a:hover {
-  background: transparent;
-  color: #00b456;
+  color: hsl(205, 75%, 60%);
+  text-decoration: underline;
+}
+
+a:visited {
+  color: hsl(260, 50%, 40%);
+}
+
+a:visited:hover {
+  color: hsl(260, 75%, 60%);
 }
 
 header {
@@ -112,38 +88,10 @@ header {
 }
   header p {
     display: inline-block;
-    font-weight: 600;
+    font-weight: 400;
     margin: 0;
     position: relative;
   }
-    header p a {
-      background-color: #3e02ff;
-      color: #fff;
-      display: block;
-      padding-right: 10px;
-      text-shadow: 0 -1px 0 #3e02ff,
-                   1px -1px 0 #3e02ff,
-                   1px 0 0 #3e02ff,
-                   1px 1px 0 #3e02ff,
-                   0 1px 0 #3e02ff,
-                   -1px 1px 0 #3e02ff,
-                   -1px 0 0 #3e02ff,
-                   -1px -1px 0 #3e02ff;
-    }
-    header p a::before {
-      background-color: #3e02ff;
-      content: " ";
-      display: block;
-      height: 100%;
-      position: absolute;
-      right: 100%;
-      top: 0;
-      width: 1000%;
-    }
-    header p a:hover {
-      background-color: #3e02ff;
-      color: #fff;
-    }
 
 section {
   padding: 25px;
@@ -152,7 +100,7 @@ section {
 footer {
   bottom: 0;
   color: #252525;
-  font-weight: 300;
+  font-size: 13px;
   left: 0;
   padding: 25px;
   position: absolute;
@@ -166,12 +114,25 @@ footer {
     }
 
 strike {
-  background-color: #000;
+  display: inline-block;
+  position: relative;
   text-decoration: none;
 }
 
+strike::after {
+  background-color: hsla(0, 0%, 0%, 0.9);
+  -webkit-transform: rotate(1deg);
+  bottom: 0.3em;
+  content: "";
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0.3em;
+  position: absolute;
+}
+
 code {
-  background-color: #e8e8e8;
+  background-color: hsl(0, 0%, 90%);
 }
 
 pre {
@@ -185,7 +146,7 @@ pre {
     position: relative;
   }
   pre code::before {
-    background-color: #e8e8e8;
+    background-color: hsl(0, 0%, 90%);
     content: " ";
     display: block;
     height: 100%;
@@ -206,16 +167,21 @@ ul.posts > li {
   margin-bottom: 25px;
 }
   ul.posts h2 {
+    font-weight: 500;
     margin: 0;
   }
   ul.posts p {
     margin: 0;
   }
 
-ul.posts + p a::after {
-  color: #000;
-  content: "\20\2192";
+p.all {
+  font-weight: 600;
+  text-align: right;
 }
+  p.all a::after {
+    color: #000;
+    content: "\20\2192";
+  }
 
 article {
   margin-bottom: 100px;
@@ -233,24 +199,10 @@ article {
 p.meta {
   margin-top: 50px;
 }
-  p.meta a[href*="/tag/"]::before {
-    color: #000;
-    content: "#";
-  }
 
 .updated {
-  background-color: #00b456;
-  color: #fff;
+  color: hsl(140, 50%, 25%);
   font-weight: 600;
-  padding: 0 5px;
-  text-shadow: 0 -1px 0 #00b456,
-               1px -1px 0 #00b456,
-               1px 0 0 #00b456,
-               1px 1px 0 #00b456,
-               0 1px 0 #00b456,
-               -1px 1px 0 #00b456,
-               -1px 0 0 #00b456,
-               -1px -1px 0 #00b456;
 }
 
 /* Generated by Pandoc */
