@@ -71,7 +71,7 @@ void midiInputCallback(const MIDIPacketList *list,
 ```
 
 The function receives a list of MIDI packets, and `list->numPackets`{.c} tells us how many there are.
-Next, we loop over the packets and inspecit each packet individually:
+Next, we loop over the packets and inspect each packet individually:
 
 ```c
     for (UInt16 j = 0, size = 0; j < packet->length; j += size) {
