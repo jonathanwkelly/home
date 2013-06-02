@@ -42,7 +42,7 @@ Now you should be able to run `build.py --arch=ia32 --mode=release` to build the
 - [Official website](http://dartlang.org/)
 - [Project at Google Code](https://code.google.com/p/dart/)
 - [Google Groups](https://groups.google.com/a/dartlang.org/)
-- [Language specification](http://dartlang.org/docs/spec/dartLangSpec.pdf)
+- [Language specification](http://www.dartlang.org/docs/spec/latest/dart-language-specification.pdf)
 
 ## A year later
 
