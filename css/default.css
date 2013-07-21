@@ -4,9 +4,9 @@
 }
 
 html {
-  background-color: hsl(0, 0%, 95%);
+  background-color: hsl(0, 0%, 100%);
   color: hsl(0, 0%, 10%);
-  font: 400 15px/25px "Georgia", serif;
+  font: 400 15px/25px "Helvetica Neue", "Arial", sans-serif;
   height: 100%;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
@@ -18,7 +18,7 @@ html {
 body {
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 112ex;
+  max-width: 100ex;
   min-height: 100%;
   padding-bottom: 75px;
   position: relative;
@@ -26,8 +26,12 @@ body {
 
 h1, h2, h3, h4, header, footer, p.all, p.meta {
   cursor: default;
-  font-family: "Helvetica Neue", "Arial", sans-serif;
   font-size: inherit;
+}
+
+code {
+  font-family: "Menlo", "Consolas", monospace;
+  font-size: 13px;
 }
 
 h1 {
@@ -65,21 +69,12 @@ ul {
 }
 
 a {
-  color: hsl(205, 50%, 40%);
+  color: hsl(200, 100%, 30%);
   text-decoration: none;
 }
 
 a:hover {
-  color: hsl(205, 75%, 60%);
-  text-decoration: underline;
-}
-
-a:visited {
-  color: hsl(260, 50%, 40%);
-}
-
-a:visited:hover {
-  color: hsl(260, 75%, 60%);
+  color: hsl(0, 0%, 20%);
 }
 
 header {
@@ -114,25 +109,10 @@ footer {
     }
 
 strike {
-  display: inline-block;
-  position: relative;
-  text-decoration: none;
 }
 
-strike::after {
-  background-color: hsla(0, 0%, 0%, 0.9);
-  -webkit-transform: rotate(1deg);
-  bottom: 0.3em;
-  content: "";
-  display: block;
-  left: 0;
-  right: 0;
-  top: 0.3em;
-  position: absolute;
-}
-
-code {
-  background-color: hsl(0, 0%, 90%);
+code, pre code::before {
+  background-color: hsl(0, 0%, 95%);
 }
 
 pre {
@@ -146,7 +126,6 @@ pre {
     position: relative;
   }
   pre code::before {
-    background-color: hsl(0, 0%, 90%);
     content: " ";
     display: block;
     height: 100%;
@@ -176,11 +155,10 @@ ul.posts > li {
 
 p.all {
   font-weight: 600;
-  text-align: right;
 }
   p.all a::after {
-    color: #000;
-    content: "\20\2192";
+    content: "…";
+    font-family: "Menlo", "Consolas", monospace;
   }
 
 article {
