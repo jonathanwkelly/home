@@ -48,7 +48,7 @@ Another solution, if you really need it, is to use a library that adds these mis
 With this library, you could instead write `XRegExp("^\\p{L}+$")`{.javascript} and it would at least match any letter, not just A to Z.
 
 But still, don't be too restrictive with your validation scripts, you will more than likely reject valid input.
-As an example, [this regular expression](http://www.ex-parrot.com/pdw/Mail-RFC822-Address.html) is what would be required to validate that an email address conforms to [RFC 822](http://www.ietf.org/rfc/rfc0822.txt). And if you google for one, you will [find](http://javascript.about.com/library/blre.htm) [plenty](http://www.marketingtechblog.com/programming/javascript-regex-emailaddress/) of [expressions](http://www.devx.com/tips/Tip/35130) that reject valid addresses.
+As an example, [this regular expression](http://www.ex-parrot.com/pdw/Mail-RFC822-Address.html) is what would be required to validate that an email address conforms to [RFC 822](http://www.ietf.org/rfc/rfc0822.txt). And if you google for one, you will [find](http://javascript.about.com/library/blre.htm) [plenty](http://www.marketingtechblog.com/javascript-regex-emailaddress/) of [expressions](http://www.devx.com/tips/Tip/35130) that reject valid addresses.
 You can see how difficult it is to write a correct one, and how easy it is to write an incorrect one, when you try to be restrictive.
 
 If you must validate something at all, and absolutely want to use a regular expression to do it, make it as permissive as possible.

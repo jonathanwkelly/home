@@ -7,10 +7,8 @@ import Hakyll
 import System.FilePath (takeFileName)
 
 main = hakyllWith config $ do
-  match ("fonts/**" .||. "img/**" .||. "js/**" .||. "files/**") $
+  match ("fonts/**" .||. "img/**" .||. "files/**") $
     route idRoute >> compile copyFileCompiler
-
-  match "css/**" $ route idRoute >> compile compressCssCompiler
 
   tags <- buildTags "posts/*" $ fromCapture "tag/*.html"
 
@@ -21,7 +19,6 @@ main = hakyllWith config $ do
       >>= loadAndApplyTemplate "templates/postmeta.html" (postContext tags)
       >>= loadAndApplyTemplate "templates/post.html" (postContext tags)
       >>= loadAndApplyTemplate "templates/default.html" (postContext tags)
-      >>= relativizeUrls
 
   create ["posts.html"] $ do
     route idRoute
@@ -31,7 +28,6 @@ main = hakyllWith config $ do
       makeItem ""
         >>= loadAndApplyTemplate "templates/postlist.html" postListContext
         >>= loadAndApplyTemplate "templates/default.html"  postListContext
-        >>= relativizeUrls
 
   -- Post tags
   tagsRules tags $ \ tag pattern -> do
@@ -43,18 +39,16 @@ main = hakyllWith config $ do
       makeItem ""
         >>= loadAndApplyTemplate "templates/postlist.html" tagListContext
         >>= loadAndApplyTemplate "templates/default.html"  tagListContext
-        >>= relativizeUrls
 
   create ["index.html"] $ do
     route topRoute
     compile $ do
       list <- postList tags "posts/*"
       makeItem list
-      let indexContext = constField "posts" list <> constField "title" "Index" <> defaultContext
+      let indexContext = constField "title" "Index" <> constField "posts" list <> defaultContext
       makeItem ""
         >>= loadAndApplyTemplate "pages/index.html" indexContext
         >>= loadAndApplyTemplate "templates/default.html" indexContext
-        >>= relativizeUrls
 
   create ["rss.xml"] $ do
     route idRoute
@@ -62,7 +56,7 @@ main = hakyllWith config $ do
       posts <- recentFirst =<< loadAllSnapshots "posts/*" "content"
       renderRss feedConfiguration feedContext posts
 
-  forM_ ["templates/*", "pages/*"] $ flip match $ compile templateCompiler
+  forM_ ["css/*", "js/*", "templates/*", "pages/*"] $ flip match $ compile templateCompiler
 
 postList :: Tags -> Pattern -> Compiler String
 postList tags pattern = do
@@ -92,7 +86,7 @@ postRoute = customRoute $ dropWhile (not . isLetter) . takeFileName . toFilePath
 topRoute = customRoute (takeFileName . toFilePath)
 
 config = defaultConfiguration
-  { deployCommand = "rsync --checksum -avz \
+  { deployCommand = "./minify.sh; rsync --checksum -avz \
                     \_site/* jonas@192.168.11.1:/usr/local/www/jonas/jonaswesterlund.se/"
   }
 
