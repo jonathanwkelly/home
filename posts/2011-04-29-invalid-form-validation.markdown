@@ -1,8 +1,8 @@
 ---
 title:        Invalid form validation
-description:  Whining about web form validation
+description:  Whining about overly restrictive web form validation.
 author:       Jonas Westerlund
-tags:         javascript, regular-expressions, unicode
+tags:         html, javascript, regular-expressions, unicode
 ---
 
 Every now and then I end up on a website that, for no good reason, rejects something I enter into a form.

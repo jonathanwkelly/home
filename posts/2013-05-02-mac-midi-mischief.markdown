@@ -1,8 +1,8 @@
 ---
 title:        Mac OS X MIDI mischief
-description:  Exploring the MIDI protocol for fun and profit
+description:  Exploring the basics of the MIDI protocol for fun and nonprofit.
 author:       Jonas Westerlund
-tags:         audio, c, c++, mac-os-x, midi, objective-c
+tags:         audio, c, c++, midi, objective-c, os-x
 ---
 
 The <abbr title="Musical Instrument Digital Interface">[MIDI](http://en.wikipedia.org/wiki/MIDI)</abbr> protocol was created in the early eighties,

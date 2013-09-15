@@ -1,6 +1,6 @@
 ---
 title:        iOS audio programming
-description:  My experience writing a synthesizer for iOS, with some tips and tricks
+description:  My experience writing a simple musical synthesizer for iOS, with some tips and tricks.
 author:       Jonas Westerlund
 tags:         audio, c, fixed-point, fm, ios, objective-c, synthesis
 ---
