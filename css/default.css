@@ -24,7 +24,7 @@ body {
   position: relative;
 }
 
-h1, h2, h3, h4, header, footer, p.all, p.meta {
+h1, h2, h3, h4, header, footer, .all, .meta {
   cursor: default;
   font-size: inherit;
 }
@@ -82,7 +82,6 @@ header {
 
   header p {
     display: inline-block;
-    font-weight: 400;
     margin: 0;
   }
 
@@ -92,7 +91,7 @@ section {
 
 footer {
   bottom: 0;
-  color: #252525;
+  color: #666;
   font-size: 13px;
   left: 0;
   padding: 25px;
@@ -147,22 +146,57 @@ q::after {
   content: "”";
 }
 
-ul.posts > li {
+.posts > li {
   margin-bottom: 25px;
 }
 
-  ul.posts h2 {
+  .posts h2 {
     font-weight: 500;
     margin: 0;
   }
 
-  ul.posts p {
+  .posts p {
     margin: 0;
   }
 
-p.all {
-  font-weight: 600;
+.tags {
+  font-size: 11px;
+  margin: 0;
 }
+
+  .tags li {
+    display: inline;
+    margin-right: 10px;
+  }
+
+    .tags a {
+      background: #e6e6e6;
+      border-radius: 3px;
+      color: #999;
+      padding: 2px 5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .tags a:hover {
+      background: #4d4d4d;
+      color: #fff;
+    }
+
+.all {
+  text-align: right;
+}
+
+  .all a {
+    border: 1px solid #089108;
+    border-radius: 3px;
+    padding: 3px 7px;
+  }
+
+  .all a:hover {
+    background: #089108;
+    color: #fff;
+  }
 
 article {
   margin-bottom: 100px;
@@ -179,7 +213,9 @@ article {
     position: absolute;
   }
 
-p.meta {
+.meta {
+  color: #666;
+  font-size: 13px;
   margin-top: 50px;
 }
 
