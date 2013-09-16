@@ -1,4 +1,5 @@
 ---
+date:         2011-10-13
 title:        Darting around
 description:  Taking Google’s new programming language out for a spin on Mac OS X.
 author:       Jonas Westerlund

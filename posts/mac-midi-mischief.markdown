@@ -1,16 +1,17 @@
 ---
+date:         2013-05-02
 title:        Mac OS X MIDI mischief
 description:  Exploring the basics of the MIDI protocol for fun and nonprofit.
 author:       Jonas Westerlund
 tags:         audio, c, c++, midi, objective-c, os-x
 ---
 
-The <abbr title="Musical Instrument Digital Interface">[MIDI](http://en.wikipedia.org/wiki/MIDI)</abbr> protocol was created in the early eighties,
+The <abbr title="Musical Instrument Digital Interface">[MIDI](https://en.wikipedia.org/wiki/MIDI)</abbr> protocol was created in the early eighties,
 as digital musical instruments were becoming increasingly common.
 Earlier, analog devices often used a simplistic method of control called [<abbr title="Control Voltage">CV</abbr>/gate](http://en.wikipedia.org/wiki/CV/Gate).
 The new, digital instruments were more complex, and a standardized way for these devices to communicate was needed.
 MIDI filled this need, and did it so well that it is still in use today, more than 30 years later.
-<abbr title="Open Sound Control">[OSC](http://en.wikipedia.org/wiki/Open_Sound_Control)</abbr> can be used as an alternative to MIDI,
+<abbr title="Open Sound Control">[OSC](https://en.wikipedia.org/wiki/Open_Sound_Control)</abbr> can be used as an alternative to MIDI,
 but is not nearly as universal.
 
 In this post, I will demonstrate the basics of [CoreMIDI](https://developer.apple.com/library/mac/documentation/MusicAudio/Reference/CACoreMIDIRef/MIDIServices/),

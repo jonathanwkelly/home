@@ -16,7 +16,7 @@ main = hakyllWith config $ do
   tags <- buildTags "posts/*" $ fromCapture "tag/*.html"
 
   match "posts/*" $ do
-    route   $ setExtension ".html" `composeRoutes` postRoute
+    route   $ setExtension ".html" `composeRoutes` topRoute
     compile $ pandocCompiler
       >>= saveSnapshot "content"
       >>= loadAndApplyTemplate "templates/post.html" (postContext tags)
@@ -25,17 +25,17 @@ main = hakyllWith config $ do
   create ["posts.html"] $ do
     route idRoute
     compile $ do
-      list <- postList tags "posts/*"
+      list <- postList id tags "posts/*"
       let postListContext = constField "title" "All posts" <> constField "posts" list <> defaultContext
       makeItem ""
         >>= loadAndApplyTemplate "templates/postlist.html" postListContext
         >>= loadAndApplyTemplate "templates/default.html"  postListContext
 
-  tagsRules tags $ \ tag pattern -> do
-    let title = "Posts tagged with " <> tag
+  tagsRules tags $ \tag pattern -> do
+    let title = "Posts about " <> tag
     route idRoute
     compile $ do
-      list <- postList tags pattern
+      list <- postList id tags pattern
       let tagListContext = constField "title" title <> constField "posts" list <> defaultContext
       makeItem ""
         >>= loadAndApplyTemplate "templates/postlist.html" tagListContext
@@ -44,7 +44,7 @@ main = hakyllWith config $ do
   create ["index.html"] $ do
     route topRoute
     compile $ do
-      list <- postList tags "posts/*"
+      list <- postList (take 3) tags "posts/*"
       makeItem list
       let indexContext = constField "title" "Index" <> constField "posts" list <> defaultContext
       makeItem ""
@@ -57,18 +57,17 @@ main = hakyllWith config $ do
       posts <- recentFirst =<< loadAllSnapshots "posts/*" "content"
       renderRss feedConfiguration feedContext posts
 
-postList :: Tags -> Pattern -> Compiler String
-postList tags pattern = do
+-- postList :: (Typeable a, Binary a) => ([Item a] -> [Item String]) -> Tags -> Pattern -> Compiler String
+postList f tags pattern = do
   postItemTpl <- loadBody "templates/postitem.html"
-  posts       <- recentFirst =<< loadAll pattern
+  posts       <- fmap f . recentFirst =<< loadAll pattern
   applyTemplateList postItemTpl (postContext tags) posts
 
-postContext :: Tags -> Context String
 postContext tags = mconcat
   [ modificationTimeField "mtime" "%U"
   , dateField "date" "%B %e, %Y"
   , dateField "isoDate" "%Y-%m-%d"
-  , customTagsField "tags" tags
+  , tagsFieldWith' getTags "tags" tags
   , defaultContext
   ]
 
@@ -77,9 +76,6 @@ feedContext = mconcat
   , dateField "date" "%B %e, %Y"
   , defaultContext
   ]
-
--- Turn "posts/2011-11-21-post.html" into "post.html"
-postRoute = customRoute $ dropWhile (not . isLetter) . takeFileName . toFilePath
 
 -- Turn "pages/foo.html" into "foo.html"
 topRoute = customRoute (takeFileName . toFilePath)
@@ -95,9 +91,6 @@ tagsFieldWith' getTags' key tags = field key $ \item -> do
     renderLink _   Nothing         = Nothing
     renderLink tag (Just filePath) = Just $
       "<li><a href=\"" ++ toUrl filePath ++ "\">" ++ tag ++ "</a></li>"
-
-customTagsField :: String -> Tags -> Context a
-customTagsField = tagsFieldWith' getTags
 
 config = defaultConfiguration
   { deployCommand = "./minify.sh; rsync --checksum -avz \

@@ -1,4 +1,5 @@
 ---
+date:         2012-10-29
 title:        iOS audio programming
 description:  My experience writing a simple musical synthesizer for iOS, with some tips and tricks.
 author:       Jonas Westerlund
@@ -209,7 +210,3 @@ I was not totally convinced that using fixed-point would be worth the trouble, i
 After observing the performance improvements even after a quick, unoptimized port from floating point, I no longer had any doubts.
 While it is a bit tricky at first, it gives us a lot of flexibility, letting us mix and match different types and precisions based on the characteristics and requirements of specific components.
 It's almost like it's made for cheating.
-
-<span class="updated">Updated <time datetime="2012-11-10">november 10, 2012</time>:</span>
-The FM synthesizer will be submitted to the App Store eventually.
-There's a beta version available on [TestFlight](https://testflightapp.com), let me know if you want to try it.

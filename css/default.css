@@ -18,17 +18,12 @@ html {
 body {
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 100ex;
+  max-width: 50em;
   min-height: 100%;
   padding-bottom: 75px;
   position: relative;
 }
-
-h1, h2, h3, h4, header, footer, .all, .meta {
-  cursor: default;
-  font-size: inherit;
-}
-
+  
 pre {
   font-family: "Menlo", "Consolas", monospace;
   font-size: 13px;
@@ -51,7 +46,6 @@ h2 {
 
 h3 {
   display: run-in;
-  font-weight: 500;
   margin-right: 10px;
   text-transform: uppercase;
 }
@@ -65,13 +59,11 @@ ul {
 }
 
 a {
-  /* color: hsl(120, 90%, 30%); */
-  color: #089108;
+  color: #093;
   text-decoration: none;
 }
 
 a:hover {
-  /* color: hsl(0, 0%, 30%); */
   color: #4d4d4d;
 }
 
@@ -108,12 +100,9 @@ footer {
     footer p a:hover {
     }
 
-strike {
-}
-
-code, pre code::before {
-  /* background-color: hsl(0, 0%, 95%); */
+code {
   background-color: #f2f2f2;
+  padding: 0 3px;
 }
 
 pre {
@@ -123,28 +112,8 @@ pre {
   pre code {
     display: block;
     line-height: 20px;
-    margin: 0 -25px;
-    padding: 25px;
-    position: relative;
+    outline: 10px solid #f2f2f2;
   }
-
-  pre code::before {
-    content: " ";
-    display: block;
-    height: 100%;
-    position: absolute;
-    right: 100%;
-    top: 0;
-    width: 100%;
-  }
-
-q::before {
-  content: "“";
-}
-
-q::after {
-  content: "”";
-}
 
 .posts > li {
   margin-bottom: 25px;
@@ -165,14 +134,14 @@ q::after {
 }
 
   .tags li {
-    display: inline;
-    margin-right: 10px;
+    display: inline-block;
+    margin-right: 12px;
   }
 
     .tags a {
       background: #e6e6e6;
       border-radius: 3px;
-      color: #999;
+      color: #666;
       padding: 2px 5px;
       text-transform: uppercase;
       white-space: nowrap;
@@ -188,13 +157,13 @@ q::after {
 }
 
   .all a {
-    border: 1px solid #089108;
+    border: 1px solid #093;
     border-radius: 3px;
     padding: 3px 7px;
   }
 
   .all a:hover {
-    background: #089108;
+    background: #093;
     color: #fff;
   }
 
@@ -203,10 +172,11 @@ article {
 }
 
   article ul li {
-    margin: 0 0 10px 20px;
+    margin: 0 0 10px 40px;
   }
 
   article ul li::before {
+    color: #666;
     content: "\25CF\20";
     display: block;
     margin-left: -20px;
@@ -216,7 +186,13 @@ article {
 .meta {
   color: #666;
   font-size: 13px;
-  margin-top: 50px;
+  margin: 0;
+}
+
+.pull-request {
+  color: #666;
+  margin-top: 75px;
+  text-align: right;
 }
 
 .updated {
@@ -245,58 +221,49 @@ td.sourceCode {
   padding-left: 5px;
 }
 
-.kw {
-  color: #312cff;
+.kw /* Keyword */ {
+  color: #5c11a6;
   font-weight: 600;
 }
 
-.dt {
-  color: #ba00aa;
+.dt /* Data type */ {
+  color: #a6295d;
 }
 
-.dv {
-  color: #18b400;
+.dv /* Decimal value */,
+.bn /* Base other-than-ten */,
+.fl /* Float */ {
+  color: #14ccba;
 }
 
-.bn {
-  color: #40a070;
+.ch /* Char */ {
+  color: #990400;
 }
 
-.fl {
-  color: #40a070;
+.st /* String */ {
+  color: #990400;
 }
 
-.ch {
-  color: #4070a0;
-}
-
-.st {
-  color: #004dac;
-}
-
-.co {
-  color: #02b0ad;
+.co /* Comment */ {
+  color: #999;
   font-style: italic;
 }
 
-.ot {
-  color: #004dac;
+.ot /* Other token */ {
+  color: #004c19;
 }
 
-.al {
-  color: #ff0045;
+.al /* Alert (warning messages) */,
+.er /* Error token */ {
+  color: #e58f0b;
   font-weight: 600;
 }
 
-.fu {
-  color: #004dac;
+.fu /* Function */ {
+  color: #093;
   font-weight: 600;
 }
 
-.re {
-}
-
-.er {
-  color: #ff0045;
-  font-weight: 600;
+.re /* Region marker */ {
+  /* What is that even */
 }

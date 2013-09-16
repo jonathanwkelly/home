@@ -1,3 +1,4 @@
+/** @type {Array.<number>} */
 var times = [
   1000,
   60000,
@@ -8,6 +9,7 @@ var times = [
   31556900000
 ];
 
+/** @type {Array.<string>} */
 var labels = [
   "second",
   "minute",
@@ -18,6 +20,10 @@ var labels = [
   "year"
 ];
 
+/**
+ *  @param  {number}  t
+ *  @return {string}
+ */
 function timeAgo(t) {
   var rem = Date.now() - t;
   var abs = Math.abs(rem);
@@ -40,6 +46,7 @@ function timeAgo(t) {
   return "";
 }
 
+/** @type {Array.<string>} */
 var nums = [
   "zero",
   "one",
@@ -53,17 +60,22 @@ var nums = [
   "nine"
 ];
 
+/**
+ *  @param  {number}  n
+ *  @return {string}
+ */
 function cardinal(n) {
-  return n >= nums.length ? String(n) : nums[n];
+  return n < nums.length ? nums[n] : String(n);
 }
 
-setInterval(function updateDates() {
-  var timeElements = document.getElementsByTagName("time");
+/** @type {NodeList.<Node>} */
+var timeElements = document.getElementsByTagName("time");
 
+setInterval(function updateDates() {
   for (var i = 0, l = timeElements.length; i < l; ++i) {
     var timeEl = timeElements[i];
-    var ds = timeEl.getAttribute("datetime");
-    timeEl.textContent = timeAgo(new Date(ds));
+    var dateString = timeEl.getAttribute("datetime");
+    timeEl.textContent = timeAgo(new Date(dateString));
   }
 
   return updateDates;

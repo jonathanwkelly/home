@@ -1,4 +1,5 @@
 ---
+date:         2011-04-29
 title:        Invalid form validation
 description:  Whining about overly restrictive web form validation.
 author:       Jonas Westerlund
