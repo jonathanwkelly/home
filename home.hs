@@ -80,7 +80,7 @@ feedContext = mconcat
 -- Turn "pages/foo.html" into "foo.html"
 topRoute = customRoute (takeFileName . toFilePath)
 
-tagsFieldWith' :: (Identifier -> Compiler [String]) -> String -> Tags -> Context a                          -- ^ Resulting context
+tagsFieldWith' :: (Identifier -> Compiler [String]) -> String -> Tags -> Context a
 tagsFieldWith' getTags' key tags = field key $ \item -> do
   tags' <- getTags' $ itemIdentifier item
   links <- forM tags' $ \tag -> do
@@ -93,7 +93,7 @@ tagsFieldWith' getTags' key tags = field key $ \item -> do
       "<li><a href=\"" ++ toUrl filePath ++ "\">" ++ tag ++ "</a></li>"
 
 config = defaultConfiguration
-  { deployCommand = "./minify.sh; rsync --checksum -avz \
+  { deployCommand = "rsync --checksum -avz \
                     \_site/* jonas@192.168.11.1:/usr/local/www/jonas/jonaswesterlund.se/"
   }
 

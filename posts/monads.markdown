@@ -129,7 +129,7 @@ m >>= f = case m of
 ```
 
 So `m >>= f`{.haskell} gives us `Nothing`{.haskell} if the value is `Nothing`{.haskell},
-and applies `f`{.haskell} to the value inside `Just a` otherwise, returning a new value of type `Maybe a`{.haskell}.
+and applies `f`{.haskell} to the value inside `Just a`{.haskell} otherwise, returning a new value of type `Maybe a`{.haskell}.
 Great!
 
 ## Concluding thoughts

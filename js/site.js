@@ -10,7 +10,7 @@ var times = [
 ];
 
 /** @type {Array.<string>} */
-var labels = [
+var timeLabels = [
   "second",
   "minute",
   "hour",
@@ -21,25 +21,25 @@ var labels = [
 ];
 
 /**
- *  @param  {number}  t
+ *  @param  {number}  time
  *  @return {string}
  */
-function timeAgo(t) {
-  var rem = Date.now() - t;
-  var abs = Math.abs(rem);
-  var idx = times.length;
-  var suf = rem < 0 ? " from now" : " ago";
-  var num = 0;
+function timeAgo(time) {
+  var remainder = Date.now() - time;
+  var absoluteValue = Math.abs(remainder);
+  var index = times.length;
+  var suffix = remainder < 0 ? " from now" : " ago";
+  var count = 0;
 
-  if (abs < 1000) {
+  if (absoluteValue < 1000) {
     return "now";
   }
 
-  while (idx--) {
-    num = Math.round(abs / times[idx]);
+  while (index--) {
+    count = Math.round(absoluteValue / times[index]);
 
-    if (num) {
-      return cardinal(num) + " " + labels[idx] + (num > 1 ? "s" : "") + suf;
+    if (count) {
+      return cardinal(count) + " " + timeLabels[index] + (count > 1 ? "s" : "") + suffix;
     }
   }
 
@@ -47,7 +47,7 @@ function timeAgo(t) {
 }
 
 /** @type {Array.<string>} */
-var nums = [
+var cardinalStrings = [
   "zero",
   "one",
   "two",
@@ -65,7 +65,7 @@ var nums = [
  *  @return {string}
  */
 function cardinal(n) {
-  return n < nums.length ? nums[n] : String(n);
+  return n < cardinalStrings.length ? cardinalStrings[n] : String(n);
 }
 
 /** @type {NodeList.<Node>} */
@@ -75,7 +75,7 @@ setInterval(function updateDates() {
   for (var i = 0, l = timeElements.length; i < l; ++i) {
     var timeEl = timeElements[i];
     var dateString = timeEl.getAttribute("datetime");
-    timeEl.textContent = timeAgo(new Date(dateString));
+    timeEl.textContent = timeAgo(Date.parse(dateString));
   }
 
   return updateDates;
