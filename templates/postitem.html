@@ -1,7 +1,6 @@
 <li>
-  <h2>
-    <a href="$url$">$title$</a>
-  </h2>
-  <p>$description$</p>
-  $partial("templates/postmeta.html")$
+  <a href="$url$">
+    <strong>$title$.</strong> $description$
+    <span class="meta">Published <time datetime="$isoDate$">$date$</time>.</span>
+  </a>
 </li>

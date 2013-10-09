@@ -2,6 +2,7 @@
 
 import Control.Monad (forM, forM_)
 import Data.Char (isLetter)
+import Data.List (intersperse)
 import Data.Maybe (catMaybes)
 import Data.Monoid ((<>), mconcat)
 import Hakyll
@@ -44,7 +45,7 @@ main = hakyllWith config $ do
   create ["index.html"] $ do
     route topRoute
     compile $ do
-      list <- postList (take 3) tags "posts/*"
+      list <- postList (take 4) tags "posts/*"
       makeItem list
       let indexContext = constField "title" "Index" <> constField "posts" list <> defaultContext
       makeItem ""
@@ -86,11 +87,11 @@ tagsFieldWith' getTags' key tags = field key $ \item -> do
   links <- forM tags' $ \tag -> do
     route' <- getRoute $ tagsMakeId tags tag
     return $ renderLink tag route'
-  return . mconcat . catMaybes $ links
+  return . mconcat . intersperse ", " . catMaybes $ links
   where
     renderLink _   Nothing         = Nothing
     renderLink tag (Just filePath) = Just $
-      "<li><a href=\"" ++ toUrl filePath ++ "\">" ++ tag ++ "</a></li>"
+      "<a href=\"" ++ toUrl filePath ++ "\">" ++ tag ++ "</a>"
 
 config = defaultConfiguration
   { deployCommand = "rsync --checksum -avz \

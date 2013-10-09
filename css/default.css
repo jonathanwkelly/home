@@ -1,3 +1,154 @@
+/* Font stuff */
+@font-face {
+  font-family: "Alix FB";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/alix-text.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Alix FB";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/alix-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Alix FB";
+  font-style: italic;
+  font-weight: normal;
+  src: url("/fonts/alix-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Alix FB";
+  font-style: italic;
+  font-weight: bold;
+  src: url("/fonts/alix-bold-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Concourse Text";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/concourse-t3.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Concourse Text";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/concourse-t6.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Concourse Text";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/concourse-t7.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Concourse Caps";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/concourse-c3.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Concourse Caps";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/concourse-c4.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Concourse Caps";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/concourse-c6.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Equity Text B";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/equity-b-text.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Equity Text B";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/equity-b-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Equity Text B";
+  font-style: italic;
+  font-weight: normal;
+  src: url("/fonts/equity-b-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Equity Text B";
+  font-style: italic;
+  font-weight: bold;
+  src: url("/fonts/equity-b-bold-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Equity Caps B";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/equity-b-caps.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Equity Caps B";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/equity-b-caps-bold.woff") format("woff");
+}
+
+/* Special stuff */
+.posts a {
+  color: inherit;
+}
+
+.posts strong {
+  color: #093;
+}
+
+.posts a:hover strong {
+  color: inherit;
+}
+
+.pull-request {
+  color: #666;
+  font-style: italic;
+  margin: 50px 0;
+}
+
+.meta {
+  color: #666;
+  margin: 0;
+}
+
+  .meta a {
+    color: #666;
+    font-family: "Concourse Caps";
+  }
+
+.all {
+  text-align: right;
+}
+
+  .all a::after {
+    content: "\20\2192";
+  }
+
+/* General stuff */
 * {
   margin: 0;
   padding: 0;
@@ -6,56 +157,78 @@
 html {
   background: #fff;
   color: #000;
-  font: 400 15px/25px "Helvetica Neue", "Arial", sans-serif;
+  font: 300 25px/35px "Concourse Text", "Helvetica Neue", "Arial", sans-serif;
   height: 100%;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -o-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
 }
 
 body {
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 50em;
+  max-width: 35em;
   min-height: 100%;
-  padding-bottom: 75px;
+  padding-bottom: 90px;
   position: relative;
-}
-  
-pre {
-  font-family: "Menlo", "Consolas", monospace;
-  font-size: 13px;
 }
 
 h1 {
-  margin: 0 0 25px;
-  font-size: 25px;
-  font-weight: 400;
-}
-
-h2, h3 {
-  font-weight: 500;
-  margin-top: 50px;
+  font-family: "Concourse Text";
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 50px;
+  margin-bottom: 50px;
 }
 
 h2 {
-  font-size: 20px;
+  font-family: "Concourse Caps";
+  font-size: 35px;
+  font-weight: 400;
+  text-transform: lowercase
+}
+
+article h2 {
+  margin-top: 50px;
 }
 
 h3 {
-  display: run-in;
-  margin-right: 10px;
-  text-transform: uppercase;
+  font-family: "Equity Caps B";
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 50px;
+  text-transform: lowercase;
 }
 
-dl, p, ul {
+dl, ol, p, ul {
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   margin: 25px 0;
 }
 
-ul {
+li {
   list-style: none;
+  margin: 0 0 15px 35px;
+  position: relative;
+}
+
+li::before {
+  left: -35px;
+  position: absolute;
+  top: 0;
+}
+
+ul li::before {
+  content: "\2022";
+}
+
+ol {
+  counter-reset: item;
+}
+
+ol li:before {
+  content: counter(item) ".";
+  counter-increment: item;
 }
 
 a {
@@ -67,24 +240,33 @@ a:hover {
   color: #4d4d4d;
 }
 
+strong {
+  font-weight: 600;
+}
+
+/* Sectioning stuff */
 header {
-  padding: 25px;
+  padding: 35px;
 }
 
   header p {
-    margin-top: 0;
+    margin: 0;
   }
 
+    header a {
+      color: #666;
+    }
+
 section {
-  padding: 25px;
+  padding: 35px;
 }
 
 footer {
   bottom: 0;
-  color: #666;
-  font-size: 13px;
+  color: #999;
+  font-size: 20px;
   left: 0;
-  padding: 25px;
+  padding: 35px;
   position: absolute;
   right: 0;
 }
@@ -93,109 +275,32 @@ footer {
     margin: 0;
   }
 
-    footer p a {
+    footer a {
       color: inherit;
     }
 
+/* Code stuff */
 code {
-  background-color: #f2f2f2;
-  padding: 0 3px;
+  font-family: "Alix FB", "Consolas", monospace;
   white-space: pre-wrap;
 }
 
-pre code {
-  display: block;
-  line-height: 20px;
-  outline: 10px solid #f2f2f2;
+pre {
+  margin-right: -35px;
 }
 
-.posts > li {
-  margin-bottom: 25px;
-}
-
-  .posts h2 {
-    font-weight: 500;
-    margin: 0;
-  }
-
-  .posts p {
-    margin: 0;
-  }
-
-.tags {
-  font-size: 11px;
-  margin: 0;
-}
-
-  .tags li {
-    display: inline-block;
-    margin-right: 12px;
-  }
-
-    .tags a {
-      background: #e6e6e6;
-      border-radius: 3px;
-      color: #666;
-      padding: 2px 5px;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .tags a:hover {
-      background: #4d4d4d;
-      color: #fff;
-    }
-
-.all {
-  text-align: right;
-}
-
-  .all a {
-    border: 1px solid #093;
-    border-radius: 3px;
-    padding: 3px 7px;
-  }
-
-  .all a:hover {
-    background: #093;
-    color: #fff;
-  }
-
+/* Article stuff */
 article {
-  margin-bottom: 100px;
-}
-
-  article ul li {
-    margin: 0 0 10px 40px;
-  }
-
-  article ul li::before {
-    color: #666;
-    content: "\25CF\20";
-    display: block;
-    margin-left: -20px;
-    position: absolute;
-  }
-
-.meta {
-  color: #666;
-  font-size: 13px;
-  margin: 0;
-}
-
-.pull-request {
-  color: #666;
-  margin: 75px 0 0;
-  text-align: right;
-}
-
-.updated {
-  font-weight: 500;
-  text-transform: uppercase;
+  font-family: "Equity Text B", "Georgia", serif;
 }
 
 /* Generated by Pandoc */
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre {
+/*
+table.sourceCode,
+tr.sourceCode,
+td.lineNumbers,
+td.sourceCode,
+table.sourceCode pre {
   margin: 0;
   padding: 0;
   border: 0;
@@ -214,6 +319,7 @@ td.lineNumbers {
 td.sourceCode {
   padding-left: 5px;
 }
+*/
 
 .kw /* Keyword */ {
   color: #5c11a6;
@@ -239,7 +345,7 @@ td.sourceCode {
 }
 
 .co /* Comment */ {
-  color: #999;
+  color: #666;
   font-style: italic;
 }
 

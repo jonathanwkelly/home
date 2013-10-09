@@ -1,13 +1,13 @@
 ---
 date:         2013-09-17
-title:        Yet another monad introduction
+title:        Yet another introduction to monads
 description:  An introduction to monads, based on the definition in the Haskell standard library.
 author:       Jonas Westerlund
-tags:         functional, haskell, monad, programming
+tags:         functional, haskell, monads, programming
 ---
 
 Monads have an undeserved reputation of being difficult to understand.
-To make matters worse, there is a widespread misconception that you need to master the subject before you can proceed in your functional programming adventures (Haskell in particular).
+To make matters worse, there seems to be a widespread belief that you need to master the subject before you can proceed in your functional programming adventures (Haskell in particular).
 
 This post is not intended to give you a deep understanding of monads,
 but to demonstrate that there is nothing mysterious going on,
@@ -15,13 +15,13 @@ and that you can happily code away without getting hung up on it.
 I will try to avoid Haskell jargon, and provide analogous code in other languages where possible.
 
 ## Summary
-By going through the definition of a monad, we will see that:
+By going through the definition of a monad, we will find that:
 
 - A monad is an interface which declares two primary methods
 - A monad implementation should obey three simple laws
 
 That's it, really. If you stop reading here, that's fine.
-If you want to look a bit closer, read on.
+If you want to look a bit closer, proceed.
 
 ## A quick tour of Haskell syntax
 If you are not familiar with Haskell syntax, here is a brief overview of the constructs used in this post.
@@ -39,8 +39,10 @@ A type class describes an interface, much like interfaces in Java and similar la
 They take the form:
 
 ```haskell
-class Interfoo i where                -- `i` is any type implementing the interface
-  aMethod       :: i a -> i b -> i b  -- `a` and `b` are type parameters
+-- `i` is any type implementing the interface
+class Interfoo i where
+  -- `a` and `b` are type parameters
+  aMethod       :: i a -> i b -> i b
   anotherMethod :: a -> i a
 ```
 
@@ -52,8 +54,10 @@ A monad can be thought of as an interface with two methods: *bind*, written `(>>
 
 ```haskell
 class Monad m where
-  (>>=)  :: m a -> (a -> m b) -> m b  -- Pronounced "bind"
-  return :: a   -> m a                -- Not a keyword, just an unfortunate name
+  -- Pronounced "bind"
+  (>>=)  :: m a -> (a -> m b) -> m b
+  -- Not a keyword, just an unfortunate name
+  return :: a   -> m a
 ```
 
 The definiton in Haskell's `Control.Monad`{.haskell} contains two additional methods, `(>>)`{.haskell} and `fail`{.haskell}.
@@ -68,9 +72,12 @@ A monad implementation should obey three laws: *left identity*, *right identity*
 They can be defined like this:
 
 ```haskell
-return a >>= f                  = f a               -- Left identity
-m        >>= return             = m                 -- Right identity
-m        >>= (\x -> f x >>= g)  = (m >>= f) >>= g   -- Associativity
+-- Left identity
+return a >>= f                  = f a
+-- Right identity
+m        >>= return             = m
+-- Associativity
+m        >>= (\x -> f x >>= g)  = (m >>= f) >>= g
 ```
 
 The associative law might look a bit strange, because of the assymetry.
@@ -107,7 +114,8 @@ Going from a simple `a`{.haskell} to a monadic `m a`{.haskell} is as simple as `
 The data type `Maybe a`{.haskell} is used to represent optional values, and is defined like this:
 
 ```haskell
-data Maybe a = Nothing | Just a   -- `Nothing` and `Just` are constructors
+-- `Nothing` and `Just` are constructors
+data Maybe a = Nothing | Just a
 ```
 
 To implement the monad interface for the `Maybe`{.haskell} type, we can write:
@@ -136,7 +144,7 @@ Great!
 If this is all new to you, it might seem like a lot of weird stuff.
 But if you look at the actual definitions, it's very little (and very simple) code.
 
-I have only covered two monad implementations here --- two of the most mundane ones --- but the reason the monad interface exists is that it's an incredibly common pattern.
+I have only covered two monad implementations here---two of the most mundane ones---but the reason the monad interface exists is that it's an incredibly common pattern.
 Lots of things that may look completely different at first glance end up having monad implementations.
 
 What this lets us do is write code that work for *all monads*, letting us re-use code in different scenarios.
@@ -144,3 +152,6 @@ As monads are so pervasive, this happens quite often.
 
 It also works the other way around: if you can implement the monad interface for your own data types,
 suddenly you have a wealth of code that will work with it.
+
+Finally, you can use lists, `Maybe`{.haskell}, `IO`{.haskell}, and other types without knowing or caring that they happen to implement the monad interface.
+

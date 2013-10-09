@@ -140,7 +140,7 @@ For programmers more experienced in audio synthesis, most of these tricks are li
 I will publish them anyway, in the hope that they will help or at least inspire other newcomers.
 
 If you can think of any improvements, or other useful tricks, I would love to know!
-Either submit a comment, or [edit this post](https://github.com/nlogax/home/blob/master/posts/2012-10-29-audio-programming-ios.markdown) and submit a pull request.
+Either submit a comment, or [edit this post](https://github.com/nlogax/home/blob/master/posts/audio-programming-ios.markdown) and submit a pull request.
 
 ### Sine wave oscillators
 
@@ -178,7 +178,7 @@ This lets the envelope perform everything from super slow to instant transitions
 This works for both positive and negative slopes, and when the envelope goes from a partial release to attack and things like that.
 When the target level is reached, the envelope proceeds to the next stage, with the exception of sustain, which only proceeds once the key is released.
 
-<span class="updated">Updated <time datetime="2012-11-06">november 6, 2012</time>:</span>
+### Updated <time datetime="2012-11-06">november 6, 2012</time>
 I came up with another implementation that I like better.
 Rather than incrementing the level by rate, always increment by 1, and let the rate be the number of samples between envelope updates.
 This way, slower transitions will cause the envelope to update less frequently, while fast ones will update often and sound better.

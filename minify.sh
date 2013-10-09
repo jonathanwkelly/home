@@ -1,3 +1,5 @@
+#!/bin/sh
+
 java -jar ./lib/htmlcompressor.jar \
   --compress-css \
   --compress-js \

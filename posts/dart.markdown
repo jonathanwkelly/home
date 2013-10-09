@@ -45,7 +45,7 @@ Now you should be able to run `build.py --arch=ia32 --mode=release` to build the
 - [Google Groups](https://groups.google.com/a/dartlang.org/)
 - [Language specification](http://www.dartlang.org/docs/spec/latest/dart-language-specification.pdf)
 
-## A year later
+## Updated <time datetime="2012-10-13">october 13, 2012</time>
 
 After taking Dart for a spin, reading the documentation and specification, and trying out the major features of the language, I had no desire to make further use this language.
 Checking in on it every now and then for the past year has not changed this initial conclusion.
