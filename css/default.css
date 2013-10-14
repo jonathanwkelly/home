@@ -1,143 +1,118 @@
-/* Font stuff */
 @font-face {
   font-family: "Alix FB";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/fonts/alix-text.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Alix FB";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/fonts/alix-bold.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Alix FB";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/fonts/alix-italic.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Alix FB";
-  font-style: italic;
-  font-weight: bold;
-  src: url("/fonts/alix-bold-italic.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Concourse Text";
-  font-style: normal;
-  font-weight: 300;
-  src: url("/fonts/concourse-t3.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Concourse Text";
-  font-style: normal;
-  font-weight: 600;
-  src: url("/fonts/concourse-t6.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Concourse Text";
-  font-style: normal;
-  font-weight: 700;
-  src: url("/fonts/concourse-t7.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Concourse Caps";
-  font-style: normal;
-  font-weight: 300;
-  src: url("/fonts/concourse-c3.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Concourse Caps";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/concourse-c4.woff") format("woff");
+  src: url("/fonts/alix-fb-regular.woff") format("woff");
 }
 
 @font-face {
-  font-family: "Concourse Caps";
+  font-family: "Alix FB";
   font-style: normal;
-  font-weight: 600;
-  src: url("/fonts/concourse-c6.woff") format("woff");
+  font-weight: 700;
+  src: url("/fonts/alix-fb-bold.woff") format("woff");
 }
 
 @font-face {
-  font-family: "Equity Text B";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/fonts/equity-b-text.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Equity Text B";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/fonts/equity-b-bold.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Equity Text B";
+  font-family: "Alix FB";
   font-style: italic;
-  font-weight: normal;
-  src: url("/fonts/equity-b-italic.woff") format("woff");
+  font-weight: 400;
+  src: url("/fonts/alix-fb-italic.woff") format("woff");
 }
 
 @font-face {
-  font-family: "Equity Text B";
+  font-family: "Alix FB";
   font-style: italic;
-  font-weight: bold;
-  src: url("/fonts/equity-b-bold-italic.woff") format("woff");
+  font-weight: 700;
+  src: url("/fonts/alix-fb-bold-italic.woff") format("woff");
 }
 
 @font-face {
-  font-family: "Equity Caps B";
+  font-family: "Harriet Text";
   font-style: normal;
-  font-weight: normal;
-  src: url("/fonts/equity-b-caps.woff") format("woff");
+  font-weight: 400;
+  src: url("/fonts/harriet-text-regular.woff") format("woff");
 }
 
 @font-face {
-  font-family: "Equity Caps B";
+  font-family: "Harriet Text";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/harriet-text-regular-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Harriet Text";
   font-style: normal;
-  font-weight: bold;
-  src: url("/fonts/equity-b-caps-bold.woff") format("woff");
+  font-weight: 500;
+  src: url("/fonts/harriet-text-medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Harriet Text";
+  font-style: italic;
+  font-weight: 500;
+  src: url("/fonts/harriet-text-medium-italic.woff") format("woff");
+}
+
+/*
+@font-face {
+  font-family: "Harriet Text";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/harriet-text-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Harriet Text";
+  font-style: italic;
+  font-weight: 700;
+  src: url("/fonts/harriet-text-bold-italic.woff") format("woff");
+}
+*/
+
+@font-face {
+  font-family: "Whitney";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/whitney-book.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Whitney";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/whitney-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Whitney SC";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/whitney-medium-sc.woff") format("woff");
 }
 
 /* Special stuff */
 .posts a {
   color: inherit;
+  display: block;
 }
 
-.posts strong {
-  color: #093;
+.desc {
+  display: block;
 }
 
 .posts a:hover strong {
   color: inherit;
 }
 
-.pull-request {
+article .meta {
   color: #666;
-  font-style: italic;
-  margin: 50px 0;
-}
-
-.meta {
-  color: #666;
-  margin: 0;
+  font-size: 20px;
+  margin-top: 70px;
 }
 
   .meta a {
     color: #666;
-    font-family: "Concourse Caps";
   }
 
 .all {
@@ -145,6 +120,7 @@
 }
 
   .all a::after {
+    color: #093;
     content: "\20\2192";
   }
 
@@ -157,7 +133,7 @@
 html {
   background: #fff;
   color: #000;
-  font: 300 25px/35px "Concourse Text", "Helvetica Neue", "Arial", sans-serif;
+  font: 400 25px/35px "Harriet Text", serif;
   height: 100%;
 }
 
@@ -170,8 +146,11 @@ body {
   position: relative;
 }
 
+h1, h2, h3, header, footer, .all {
+  font-family: "Whitney", sans-serif;
+}
+
 h1 {
-  font-family: "Concourse Text";
   font-size: 50px;
   font-weight: 700;
   line-height: 50px;
@@ -179,30 +158,26 @@ h1 {
 }
 
 h2 {
-  font-family: "Concourse Caps";
+  font-family: "Whitney SC", sans-serif;
   font-size: 35px;
-  font-weight: 400;
-  text-transform: lowercase
-}
-
-article h2 {
-  margin-top: 50px;
-}
-
-h3 {
-  font-family: "Equity Caps B";
-  font-size: 25px;
-  font-weight: 600;
-  margin-top: 50px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   text-transform: lowercase;
 }
 
+h3 {
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 50px;
+}
+
 dl, ol, p, ul {
+/*
   -moz-hyphens: auto;
   -ms-hyphens: auto;
-  -o-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+*/
   margin: 25px 0;
 }
 
@@ -231,21 +206,22 @@ ol li:before {
   counter-increment: item;
 }
 
-a {
+a, .posts strong {
   color: #093;
   text-decoration: none;
 }
 
 a:hover {
-  color: #4d4d4d;
+  color: #000;
 }
 
 strong {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* Sectioning stuff */
 header {
+  font-size: 20px;
   padding: 35px;
 }
 
@@ -281,18 +257,21 @@ footer {
 
 /* Code stuff */
 code {
-  font-family: "Alix FB", "Consolas", monospace;
-  white-space: pre-wrap;
+  font-family: "Alix FB", monospace;
 }
 
 pre {
   margin-right: -35px;
+  white-space: pre-wrap;
 }
 
 /* Article stuff */
 article {
-  font-family: "Equity Text B", "Georgia", serif;
 }
+
+  article h2 {
+    margin-top: 50px;
+  }
 
 /* Generated by Pandoc */
 /*
@@ -345,6 +324,10 @@ td.sourceCode {
 }
 
 .co /* Comment */ {
+  -moz-font-feature-settings: "ss01";
+  -ms-font-feature-settings: "ss01";
+  -webkit-font-feature-settings: "ss01";
+  font-feature-settings: "ss01";
   color: #666;
   font-style: italic;
 }

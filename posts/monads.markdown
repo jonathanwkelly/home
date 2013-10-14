@@ -7,7 +7,7 @@ tags:         functional, haskell, monads, programming
 ---
 
 Monads have an undeserved reputation of being difficult to understand.
-To make matters worse, there seems to be a widespread belief that you need to master the subject before you can proceed in your functional programming adventures (Haskell in particular).
+To make matters worse, there seems to be a widespread belief that you need to master the subject before you can proceed in your functional programming adventures---Haskell in particular.
 
 This post is not intended to give you a deep understanding of monads,
 but to demonstrate that there is nothing mysterious going on,
@@ -17,18 +17,17 @@ I will try to avoid Haskell jargon, and provide analogous code in other language
 ## Summary
 By going through the definition of a monad, we will find that:
 
-- A monad is an interface which declares two primary methods
-- A monad implementation should obey three simple laws
+- A monad is an interface which declares two primary methods.
+- A monad implementation should obey three simple laws.
 
-That's it, really. If you stop reading here, that's fine.
-If you want to look a bit closer, proceed.
+That's it, really.
 
 ## A quick tour of Haskell syntax
 If you are not familiar with Haskell syntax, here is a brief overview of the constructs used in this post.
 
 A type signature describes the types of the inputs and output of a function, and is written `foo :: String -> Int`{.haskell}.
 It's similar to function prototypes in C, like `int foo(char *)`{.c}.
-Lowercase type identifiers are *type variables*, and are similar to generic types in Java, or type parameters in C++ templates (but don't let that intimidate you).
+Lowercase identifiers are *type variables*, and are similar to generic types in Java, or type parameters in C++ templates---but don't let that intimidate you.
 
 Juxtaposition denotes function application, `f a b`{.haskell}.
 That would be `f(a, b)`{.python} in Python or JavaScript.
@@ -39,9 +38,9 @@ A type class describes an interface, much like interfaces in Java and similar la
 They take the form:
 
 ```haskell
--- `i` is any type implementing the interface
+-- `i' is the type implementing the interface
 class Interfoo i where
-  -- `a` and `b` are type parameters
+  -- `a' and `b' are type parameters
   aMethod       :: i a -> i b -> i b
   anotherMethod :: a -> i a
 ```
@@ -54,7 +53,7 @@ A monad can be thought of as an interface with two methods: *bind*, written `(>>
 
 ```haskell
 class Monad m where
-  -- Pronounced "bind"
+  -- Pronounced `bind'
   (>>=)  :: m a -> (a -> m b) -> m b
   -- Not a keyword, just an unfortunate name
   return :: a   -> m a
@@ -104,17 +103,15 @@ instance Monad [] where
   return a  = [a]
 ```
 
-If the list syntax obscures the correspondence to the monad interface,
-just think of `[a]`{.haskell} as `List a`{.haskell}.
-The signature `concatMap :: (a -> [b]) -> [a] -> [b]`{.haskell} is exactly like the signature of bind (except for the argument order),
-with the list type taking the role of the monad `m`{.haskell}.
-Going from a simple `a`{.haskell} to a monadic `m a`{.haskell} is as simple as `\a -> [a]`{.haskell}.
+The signature `concatMap :: (a -> [b]) -> [a] -> [b]`{.haskell}
+is exactly like the signature of bind---except for the argument order---substituting the monad `m`{.haskell} for the list type.
+Going from an `a`{.haskell} to a monadic `m a`{.haskell} is as simple as `\a -> [a]`{.haskell}.
 
 ## The maybe monad implementation
 The data type `Maybe a`{.haskell} is used to represent optional values, and is defined like this:
 
 ```haskell
--- `Nothing` and `Just` are constructors
+-- `Nothing' and `Just' are constructors
 data Maybe a = Nothing | Just a
 ```
 
@@ -140,9 +137,9 @@ So `m >>= f`{.haskell} gives us `Nothing`{.haskell} if the value is `Nothing`{.h
 and applies `f`{.haskell} to the value inside `Just a`{.haskell} otherwise, returning a new value of type `Maybe a`{.haskell}.
 Great!
 
-## Concluding thoughts
+## Conclusion
 If this is all new to you, it might seem like a lot of weird stuff.
-But if you look at the actual definitions, it's very little (and very simple) code.
+But if you look at the actual definitions, it's very little---and very simple---code.
 
 I have only covered two monad implementations here---two of the most mundane ones---but the reason the monad interface exists is that it's an incredibly common pattern.
 Lots of things that may look completely different at first glance end up having monad implementations.

@@ -121,6 +121,6 @@ There are many more MIDI messages, but they all follow the same pattern: a statu
 
 ## Further reading
 
-- [An overview of the most common MIDI messages](http://www.midi.org/techspecs/midimessages.php)
-- [CoreMIDI reference documentation](https://developer.apple.com/library/mac/documentation/MusicAudio/Reference/CACoreMIDIRef/MIDIServices/)
-- [Example analog-style synthesizer in C++](https://github.com/nlogax/phase-osx/tree/polyblep/lib)
+- [An overview of the most common MIDI messages](http://www.midi.org/techspecs/midimessages.php).
+- [CoreMIDI reference documentation](https://developer.apple.com/library/mac/documentation/MusicAudio/Reference/CACoreMIDIRef/MIDIServices/).
+- [Example analog-style synthesizer in C++](https://github.com/nlogax/phase-osx/tree/polyblep/lib).

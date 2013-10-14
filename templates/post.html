@@ -2,14 +2,10 @@
   <article>
     <h1>$title$</h1>
     $body$
-    <p class="pull-request">
-      You can update this post by <a href="https://github.com/nlogax/home/blob/master/$path$">sending a pull request</a>
+    <p class="meta">
+      Published <time datetime="$isoDate$">$date$</time> by $author$
+      in $tags$.
+      You can update this post by <a href="https://github.com/nlogax/home/blob/master/$path$">sending a pull request</a>.
     </p>
   </article>
-  $partial("templates/postmeta.html")$
 </section>
-
-<section id="disqus_thread"></section>
-<script>
-  $partial("js/disqus.js")$
-</script>

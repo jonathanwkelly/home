@@ -32,13 +32,14 @@ args = ['xcodebuild',
  
 You will also need Java. If you would rather not install that, see above.
 
-Since Xcode 4.2, you also need to change the compiler used, in `configurations_xcode.gypi`. Change the line that reads `'GCC_VERSION': '4.2'` to `'GCC_VERSION': 'com.apple.compilers.llvmgcc42`.
+Since Xcode 4.2, you also need to change the compiler used, in `configurations_xcode.gypi`.
+Change the line that reads `'GCC_VERSION': '4.2'` to `'GCC_VERSION': 'com.apple.compilers.llvmgcc42`.
 
 Remember to run `gclient runhooks` after this, to re-generate the files needed.
 
 Now you should be able to run `build.py --arch=ia32 --mode=release` to build the release binaries.
 
-## Links
+## Pertinent links
 
 - [Official website](http://dartlang.org/)
 - [Project at Google Code](https://code.google.com/p/dart/)
@@ -54,4 +55,5 @@ While it is certainly more well-designed than JavaScript, that's not exactly a m
 I say that not to ridicule JavaScript; anyone expecting greatness [in ten days](http://www.jwz.org/blog/2010/10/every-day-i-learn-something-new-and-stupid/#comment-1021) is deluding themselves.
 I don't feel that it's even a big enough improvement to warrant the cost of switching, in the unlikely event of major adoption by the big browsers.
 
-For use outside of browsers, it feels like a step back compared to many contemporary languages, and doesn't really offer anything unique or compelling to make up for it.
+For use outside of browsers, it feels like a step back compared to many contemporary languages.
+Its type system is [broken by design](/files/dart-broken.mov), and it doesn't really offer anything unique or compelling to make up for it.
