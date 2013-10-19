@@ -1,7 +1,7 @@
 ---
 date:         2012-10-29
 title:        iOS audio programming
-description:  My experience writing a simple musical synthesizer for iOS, with some tips and tricks.
+description:  My experience writing a simple musical synthesizer for iOS.
 author:       Jonas Westerlund
 tags:         audio, c, fixed-point, fm, ios, objective-c, synthesis
 ---
@@ -142,63 +142,57 @@ I will publish them anyway, in the hope that they will help or at least inspire 
 If you can think of any improvements, or other useful tricks, I would love to know!
 Either submit a comment, or [edit this post](https://github.com/nlogax/home/blob/master/posts/audio-programming-ios.markdown) and submit a pull request.
 
-### Sine wave oscillators
+Sine wave oscillators
+:   My particular project is an [FM](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis) synthesizer, so naturally there are sine waves all over the place.
+    The period of `sin x` is usually `2π`, and that's what I used first of all, when I was still using floating point.
+    However, since it is only used for keeping track of the oscillator phase, we can use something that gives us more opportunities for cheating.
+    I ended up using an `unsigned short` for the phase, which is incremented until it wraps, signifying a cycle.
+    It still has adequate resolution even for the lowest audible frequencies.
 
-My particular project is an [FM](http://en.wikipedia.org/wiki/Frequency_modulation_synthesis) synthesizer, so naturally there are sine waves all over the place.
-The period of `sin x` is usually `2π`, and that's what I used first of all, when I was still using floating point.
-However, since it is only used for keeping track of the oscillator phase, we can use something that gives us more opportunities for cheating.
-I ended up using an `unsigned short` for the phase, which is incremented until it wraps, signifying a cycle.
-It still has adequate resolution even for the lowest audible frequencies.
+    The previous trick makes custom `sin` functions a little bit easier to implement, and we'll need at least one such function.
+    There is no one optimal function; we will have to decide which tradeoffs to make for specific components.
+    It might be beneficial to have several of them, and use a faster, less accurate one for components that do not affect audio quality very much.
 
-The previous trick makes custom `sin` functions a little bit easier to implement, and we'll need at least one such function.
-There is no one optimal function; we will have to decide which tradeoffs to make for specific components.
-It might be beneficial to have several of them, and use a faster, less accurate one for components that do not affect audio quality very much.
+Frequencies
+:   Representing frequencies in hertz feels like a natural thing to do, but we might as well define them in samples per `1 / samplerate` second.
+    Incrementing the phase is then simplified to `phase += frequency`.
 
-### Frequencies
+Sample rates and bit depths
+:   Using a high sample rate is obviously good, giving us more headroom before things start to fold, causing [aliasing](http://en.wikipedia.org/wiki/Aliasing#Sample_frequency) and trouble in general.
+    A high bit depth is also desirable, letting us represent a wider number of values.
+    But not every component in a synthesizer needs it.
+    For example, human ears can't detect tiny changes in amplitude, so 12 bits is more than enough for that.
+    With 12 bits of amplitude, updating it 44100 times per second seems a bit excessive.
+    [Low-frequency oscillators](http://en.wikipedia.org/wiki/Low-frequency_oscillation) and other components can also run at a much slower rate without degrading perceived sound quality.
 
-Representing frequencies in hertz feels like a natural thing to do, but we might as well define them in samples per `1 / samplerate` second.
-Incrementing the phase is then simplified to `phase += frequency`.
+Envelopes
+:   After a few slow and messy [ADSR envelope](http://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope) implementations, I came up with a pretty nice reformulation.
+    Instead of each stage having a duration, it has a rate of change.
+    Yes, it's the same thing, but at least for me it helped to forget about the actual durations.
+    With this implementation, we only need to ensure that `0 < rate <= MAX`.
+    This lets the envelope perform everything from super slow to instant transitions, and updating it just involves incrementing the current value with the rate, until it reaches the target level.
+    This works for both positive and negative slopes, and when the envelope goes from a partial release to attack and things like that.
+    When the target level is reached, the envelope proceeds to the next stage, with the exception of sustain, which only proceeds once the key is released.
 
-### Sample rates and bit depths
+    Updated <time datetime="2012-11-06">november 6, 2012</time>:
+    I came up with another implementation that I like better.
+    Rather than incrementing the level by rate, always increment by 1, and let the rate be the number of samples between envelope updates.
+    This way, slower transitions will cause the envelope to update less frequently, while fast ones will update often and sound better.
+    This will also ensure that the envelope always hits the target level exactly, simplifying conditionals.
+    With a minimum rate of 1 and a maximum amplitude of 4096, this means we must special-case the very highest rates.
+    To maintain the desirable properties, these can be implemented by shifting the increment one bit for each rate, so that the fastest rate increments the level by 4096, giving a 1-sample transition.
 
-Using a high sample rate is obviously good, giving us more headroom before things start to fold, causing [aliasing](http://en.wikipedia.org/wiki/Aliasing#Sample_frequency) and trouble in general.
-A high bit depth is also desirable, letting us represent a wider number of values.
-But not every component in a synthesizer needs it.
-For example, human ears can't detect tiny changes in amplitude, so 12 bits is more than enough for that.
-With 12 bits of amplitude, updating it 44100 times per second seems a bit excessive.
-[Low-frequency oscillators](http://en.wikipedia.org/wiki/Low-frequency_oscillation) and other components can also run at a much slower rate without degrading perceived sound quality.
+ARM instructions
+:   Have a glance at the [ARM instruction set](http://infocenter.arm.com/help/topic/com.arm.doc.qrc0001m/QRC0001_UAL.pdf) when there's no obvious way to implement something efficiently.
+    There might not be an instruction that will solve the problem, but maybe one that will make us approach the problem from another angle.
 
-### Envelopes
+    For example, we can make use of the [CLZ](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0068b/CIHJGJED.html) instruction to implement a fast `log2` function.
+    This instruction is available in both Clang and GCC in the form of `int __builtin_clz(unsigned int x)`, which is preferable over inline assembly, as it will generate code that will run in the simulator as well.
 
-After a few slow and messy [ADSR envelope](http://en.wikipedia.org/wiki/Synthesizer#ADSR_envelope) implementations, I came up with a pretty nice reformulation.
-Instead of each stage having a duration, it has a rate of change.
-Yes, it's the same thing, but at least for me it helped to forget about the actual durations.
-With this implementation, we only need to ensure that `0 < rate <= MAX`.
-This lets the envelope perform everything from super slow to instant transitions, and updating it just involves incrementing the current value with the rate, until it reaches the target level.
-This works for both positive and negative slopes, and when the envelope goes from a partial release to attack and things like that.
-When the target level is reached, the envelope proceeds to the next stage, with the exception of sustain, which only proceeds once the key is released.
-
-### Updated <time datetime="2012-11-06">november 6, 2012</time>
-I came up with another implementation that I like better.
-Rather than incrementing the level by rate, always increment by 1, and let the rate be the number of samples between envelope updates.
-This way, slower transitions will cause the envelope to update less frequently, while fast ones will update often and sound better.
-This will also ensure that the envelope always hits the target level exactly, simplifying conditionals.
-With a minimum rate of 1 and a maximum amplitude of 4096, this means we must special-case the very highest rates.
-To maintain the desirable properties, these can be implemented by shifting the increment one bit for each rate, so that the fastest rate increments the level by 4096, giving a 1-sample transition.
-
-### ARM instructions
-
-Have a glance at the [ARM instruction set](http://infocenter.arm.com/help/topic/com.arm.doc.qrc0001m/QRC0001_UAL.pdf) when there's no obvious way to implement something efficiently.
-There might not be an instruction that will solve the problem, but maybe one that will make us approach the problem from another angle.
-
-For example, we can make use of the [CLZ](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0068b/CIHJGJED.html) instruction to implement a fast `log2` function.
-This instruction is available in both Clang and GCC in the form of `int __builtin_clz(unsigned int x)`, which is preferable over inline assembly, as it will generate code that will run in the simulator as well.
-
-### Fixed-point everywhere
-
-My initial floating point prototype, which did very little, used around 12% of the CPU.
-After implementing some of these tricks, CPU usage dropped to something barely detectable (between 0% and 1% using the Activity Monitor template in Instruments, which is quite coarse).
-While 12% might not sound like much, that was for a single voice; polyphony would be quite limited with such terrible performance, and it would quickly gulp down battery power.
+Fixed-point everywhere
+:   My initial floating point prototype, which did very little, used around 12% of the CPU.
+    After implementing some of these tricks, CPU usage dropped to something barely detectable (between 0% and 1% using the Activity Monitor template in Instruments, which is quite coarse).
+    While 12% might not sound like much, that was for a single voice; polyphony would be quite limited with such terrible performance, and it would quickly gulp down battery power.
 
 ## Concluding thoughts
 

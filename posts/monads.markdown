@@ -32,7 +32,7 @@ Lowercase identifiers are *type variables*, and are similar to generic types in 
 Juxtaposition denotes function application, `f a b`{.haskell}.
 That would be `f(a, b)`{.python} in Python or JavaScript.
 
-Lambdas are written `\a b -> expr`{.haskell}, the `\`{.haskell} is meant to be an ASCII-friendly version of `λ`.
+Lambdas are written `\a b -> expr`{.haskell}, the `\`{.haskell} is meant to be an ASCII-friendly lambda.
 
 A type class describes an interface, much like interfaces in Java and similar languages.
 They take the form:
@@ -41,7 +41,7 @@ They take the form:
 -- `i' is the type implementing the interface
 class Interfoo i where
   -- `a' and `b' are type parameters
-  aMethod       :: i a -> i b -> i b
+  aMethod       :: i a -> (a -> i b) -> i b
   anotherMethod :: a -> i a
 ```
 
@@ -72,11 +72,11 @@ They can be defined like this:
 
 ```haskell
 -- Left identity
-return a >>= f                  = f a
+return a >>= f                 = f a
 -- Right identity
-m        >>= return             = m
+m        >>= return            = m
 -- Associativity
-m        >>= (\x -> f x >>= g)  = (m >>= f) >>= g
+m        >>= (\x -> f x >>= g) = (m >>= f) >>= g
 ```
 
 The associative law might look a bit strange, because of the assymetry.
@@ -99,8 +99,8 @@ One possible way to implement the monad interface for the list type is this:
 
 ```haskell
 instance Monad [] where
-  m >>= f   = concatMap f m
-  return a  = [a]
+  m >>= f  = concatMap f m
+  return a = [a]
 ```
 
 The signature `concatMap :: (a -> [b]) -> [a] -> [b]`{.haskell}
@@ -119,9 +119,9 @@ To implement the monad interface for the `Maybe`{.haskell} type, we can write:
 
 ```haskell
 instance Monad Maybe where
-  (Just a) >>= f  = f a
-  Nothing  >>= _  = Nothing
-  return a        = Just a
+  Just a  >>= f = f a
+  Nothing >>= _ = Nothing
+  return a      = Just a
 ```
 
 This makes use of pattern matching to provide two equations for `(>>=)`{.haskell}.
@@ -129,8 +129,8 @@ You can think of it as syntactic sugar for the following case expression:
 
 ```haskell
 m >>= f = case m of
-  (Just a)  -> f a
-  Nothing   -> Nothing
+  Just a  -> f a
+  Nothing -> Nothing
 ```
 
 So `m >>= f`{.haskell} gives us `Nothing`{.haskell} if the value is `Nothing`{.haskell},

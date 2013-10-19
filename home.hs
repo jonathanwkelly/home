@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import Control.Monad (forM, forM_)
-import Data.Char (isLetter)
 import Data.List (intersperse)
 import Data.Maybe (catMaybes)
 import Data.Monoid ((<>), mconcat)

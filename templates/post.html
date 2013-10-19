@@ -3,9 +3,7 @@
     <h1>$title$</h1>
     $body$
     <p class="meta">
-      Published <time datetime="$isoDate$">$date$</time> by $author$
-      in $tags$.
-      You can update this post by <a href="https://github.com/nlogax/home/blob/master/$path$">sending a pull request</a>.
+      $partial("templates/postmeta.html")$<br>
     </p>
   </article>
 </section>
