@@ -221,7 +221,9 @@ header {
 }
 
   header p {
+    color: #666;
     margin: 0;
+    text-transform: lowercase;
   }
 
     header a {
