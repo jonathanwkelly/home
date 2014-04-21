@@ -1,100 +1,64 @@
-/*
 @font-face {
-  font-family: "Alix FB";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/alixfb-regular.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Alix FB";
-  font-style: normal;
-  font-weight: 700;
-  src: url("/fonts/alixfb-bold.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Alix FB";
-  font-style: italic;
-  font-weight: 400;
-  src: url("/fonts/alixfb-italic.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Alix FB";
-  font-style: italic;
-  font-weight: 700;
-  src: url("/fonts/alixfb-bolditalic.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Harriet Text";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/harriettext-regular.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Harriet Text";
-  font-style: italic;
-  font-weight: 400;
-  src: url("/fonts/harriettext-regularitalic.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Harriet Text";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/fonts/harriettext-medium.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Harriet Text";
-  font-style: italic;
-  font-weight: 500;
-  src: url("/fonts/harriettext-mediumitalic.woff") format("woff");
-}
-*/
-
-@font-face {
-  src: local("Source Sans Pro"), local("SourceSansPro-Regular"), url("//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/ODelI1aHBYDBqgeIAH2zlNHq-FFgoDNV3GTKpHwuvtI.woff") format("woff");
   font-family: "Source Sans Pro";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
+  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/toadOcfmlt9b38dHJxOBGMVNtom4QlEDNJaqqqzqdSs.woff) format("woff");
 }
 
 @font-face {
   font-family: "Source Sans Pro";
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
-  src: local("Source Sans Pro Italic"), local("SourceSansPro-It"), url("//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/M2Jd71oPJhLKp0zdtTvoM_bce-VcyLJMRR1FC9qWbU8.woff") format("woff");
+  src: local("Source Sans Pro"), local("SourceSansPro-Regular"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/ODelI1aHBYDBqgeIAH2zlNHq-FFgoDNV3GTKpHwuvtI.woff) format("woff");
 }
 
 @font-face {
-  src: local("Source Sans Pro Semibold"), local("SourceSansPro-Semibold"), url("//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/toadOcfmlt9b38dHJxOBGCmgpmuQqK2I-L2S9cF65Ek.woff") format("woff");
   font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 600;
+  src: local("Source Sans Pro Semibold"), local("SourceSansPro-Semibold"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/toadOcfmlt9b38dHJxOBGCmgpmuQqK2I-L2S9cF65Ek.woff) format("woff");
 }
 
 @font-face {
-  src: local("Source Sans Pro Semibold Italic"), local("SourceSansPro-SemiboldIt"), url("//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/fpTVHK8qsXbIeTHTrnQH6J4LxuTxC3JbLqy8IUt0K1T3rGVtsTkPsbDajuO5ueQw.woff") format("woff");
+  font-family: "Source Sans Pro";
+  font-style: italic;
+  font-weight: 300;
+  src: local("Source Sans Pro Light Italic"), local("SourceSansPro-LightIt"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/fpTVHK8qsXbIeTHTrnQH6H7XMO6S-yJpg1torQFmnv33rGVtsTkPsbDajuO5ueQw.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Source Sans Pro Italic"), local("SourceSansPro-It"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/M2Jd71oPJhLKp0zdtTvoM_bce-VcyLJMRR1FC9qWbU8.woff) format("woff");
+}
+
+@font-face {
   font-family: "Source Sans Pro";
   font-style: italic;
   font-weight: 600;
+  src: local("Source Sans Pro Semibold Italic"), local("SourceSansPro-SemiboldIt"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/fpTVHK8qsXbIeTHTrnQH6J4LxuTxC3JbLqy8IUt0K1T3rGVtsTkPsbDajuO5ueQw.woff) format("woff");
 }
 
 @font-face {
-  src: local("Source Code Pro"), local("SourceCodePro-Regular"), url("//themes.googleusercontent.com/static/fonts/sourcecodepro/v4/mrl8jkM18OlOQN8JLgasD9Hq-FFgoDNV3GTKpHwuvtI.woff") format("woff");
+  font-family: "Source Code Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Source Code Pro Light"), local("SourceCodePro-Light"), url(//themes.googleusercontent.com/static/fonts/sourcecodepro/v4/leqv3v-yTsJNC7nFznSMqcVNtom4QlEDNJaqqqzqdSs.woff) format("woff");
+}
+
+@font-face {
   font-family: "Source Code Pro";
   font-style: normal;
   font-weight: 400;
+  src: local("Source Code Pro"), local("SourceCodePro-Regular"), url(//themes.googleusercontent.com/static/fonts/sourcecodepro/v4/mrl8jkM18OlOQN8JLgasD9Hq-FFgoDNV3GTKpHwuvtI.woff) format("woff");
 }
+
 @font-face {
-  src: local("Source Code Pro Semibold"), local("SourceCodePro-Semibold"), url("//themes.googleusercontent.com/static/fonts/sourcecodepro/v4/leqv3v-yTsJNC7nFznSMqSmgpmuQqK2I-L2S9cF65Ek.woff") format("woff");
   font-family: "Source Code Pro";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
+  src: local("Source Code Pro Medium"), local("SourceCodePro-Medium"), url(//themes.googleusercontent.com/static/fonts/sourcecodepro/v4/leqv3v-yTsJNC7nFznSMqbIHYkLmgtPJP77jcqN9P08.woff) format("woff");
 }
 
 .desc {
@@ -104,7 +68,7 @@
 .meta {
   color: #666;
   display: block;
-  font-size: 18px;
+  font-size: 0.75em;
 }
 
   .meta a {
@@ -123,8 +87,7 @@
 html {
   background: #fff;
   color: #000;
-  font: 400 24px/32px "Source Sans Pro", sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font: 300 1.5rem/2rem "Source Sans Pro", sans-serif;
   height: 100%;
   /*
   -moz-hyphens: auto;
@@ -138,22 +101,29 @@ html {
 body {
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 896px;
+  max-width: 36rem;
   min-height: 100%;
-  padding-bottom: 104px;
+  padding-bottom: 6.5rem;
   position: relative;
 }
 
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 1rem;
+    line-height: 1.25rem;
+  }
+}
+
 h1 {
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 48px;
-  margin-bottom: 48px;
+  font-size: 2em;
+  font-weight: 300;
+  line-height: 1em;
+  margin-bottom: 1em;
 }
 
 h2 {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 1.25em;
+  font-weight: 400;
 }
 
 dl,
@@ -161,18 +131,18 @@ ol,
 p,
 pre,
 ul {
-  margin: 24px 0;
+  margin: 1em 0;
 }
 
 dd,
 li {
   list-style: none;
-  margin: 0 0 18px 36px;
+  margin: 0 0 0.75em 1.5em;
   position: relative;
 }
 
 li::before {
-  left: -36px;
+  left: -1.5em;
   position: absolute;
   top: 0;
 }
@@ -205,7 +175,8 @@ a:hover {
 
 dt,
 strong {
-  font-weight: 600;
+  font-style: normal;
+  font-weight: 400;
 }
 
 code {
@@ -217,7 +188,7 @@ pre {
 }
 
 header {
-  font-size: 18px;
+  font-size: 0.75em;
 }
 
   header p {
@@ -233,7 +204,7 @@ header {
 footer {
   bottom: 0;
   color: #999;
-  font-size: 18px;
+  font-size: 0.75em;
   left: 0;
   position: absolute;
   right: 0;
@@ -250,7 +221,7 @@ footer {
 footer,
 header,
 section {
-  padding: 36px;
+  padding: 1.5rem;
 }
 
 article {
@@ -258,39 +229,12 @@ article {
 
   article h2,
   article .meta {
-    margin-top: 56px;
+    margin-top: 2rem;
   }
-
-/* Generated by Pandoc */
-/*
-table.sourceCode,
-tr.sourceCode,
-td.lineNumbers,
-td.sourceCode,
-table.sourceCode pre {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
-  border: none;
-}
-
-td.lineNumbers {
-  border-right: 1px solid #aaaaaa;
-  text-align: right;
-  color: #aaaaaa;
-  padding-right: 5px;
-  padding-left: 5px;
-}
-
-td.sourceCode {
-  padding-left: 5px;
-}
-*/
 
 .kw /* Keyword */ {
   color: #5c11a6;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .dt /* Data type */ {
@@ -322,12 +266,12 @@ td.sourceCode {
 .al /* Alert (warning messages) */,
 .er /* Error token */ {
   color: #e58f0b;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .fu /* Function */ {
   color: #093;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .re /* Region marker */ {
