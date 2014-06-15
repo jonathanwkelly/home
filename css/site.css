@@ -87,30 +87,22 @@
 html {
   background: #fff;
   color: #000;
-  font: 300 1.5rem/2rem "Source Sans Pro", sans-serif;
-  height: 100%;
-  /*
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-  text-align: justify;
-  */
 }
 
 body {
   box-sizing: border-box;
+  font: 300 1.5rem/2rem "Source Sans Pro", sans-serif;
   margin: 0 auto;
-  max-width: 36rem;
-  min-height: 100%;
+  max-width: 36em;
+  min-height: 100vh;
   padding-bottom: 6.5rem;
   position: relative;
 }
 
 @media screen and (max-width: 480px) {
-  html {
+  body {
     font-size: 1rem;
-    line-height: 1.25rem;
+    line-height: 1.25em;
   }
 }
 
@@ -221,7 +213,7 @@ footer {
 footer,
 header,
 section {
-  padding: 1.5rem;
+  padding: 2.25rem;
 }
 
 article {
@@ -229,7 +221,7 @@ article {
 
   article h2,
   article .meta {
-    margin-top: 2rem;
+    margin-top: 2.25rem;
   }
 
 .kw /* Keyword */ {
