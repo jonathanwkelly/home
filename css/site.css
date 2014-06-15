@@ -68,16 +68,12 @@
 .meta {
   color: #666;
   display: block;
-  font-size: 0.75em;
+  font-size: 1rem;
 }
 
   .meta a {
     color: #666;
   }
-
-.all {
-  text-align: right;
-}
 
 * {
   margin: 0;
@@ -91,30 +87,38 @@ html {
 
 body {
   box-sizing: border-box;
-  font: 300 1.5rem/2rem "Source Sans Pro", sans-serif;
+  font: 300 1.375rem/1.75rem "Source Sans Pro", sans-serif;
   margin: 0 auto;
-  max-width: 36em;
+  max-width: 56rem;
   min-height: 100vh;
-  padding-bottom: 6.5rem;
+  padding-bottom: 6.25rem;
   position: relative;
 }
 
 @media screen and (max-width: 480px) {
-  body {
-    font-size: 1rem;
-    line-height: 1.25em;
+  html {
+    font-size: 0.75rem;
   }
 }
 
+h1,
+h2,
+footer,
+.meta,
+.posts,
+.all {
+  text-align: center;
+}
+
 h1 {
-  font-size: 2em;
+  font-size: 2.75rem;
   font-weight: 300;
-  line-height: 1em;
-  margin-bottom: 1em;
+  line-height: 3rem;
+  margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.25em;
+  font-size: 1.5rem;
   font-weight: 400;
 }
 
@@ -123,24 +127,14 @@ ol,
 p,
 pre,
 ul {
-  margin: 1em 0;
+  margin: 1.5rem 0;
 }
 
 dd,
 li {
   list-style: none;
-  margin: 0 0 0.75em 1.5em;
+  margin: 0 0 1rem;
   position: relative;
-}
-
-li::before {
-  left: -1.5em;
-  position: absolute;
-  top: 0;
-}
-
-ul li::before {
-  content: "\2022";
 }
 
 ol {
@@ -180,23 +174,33 @@ pre {
 }
 
 header {
-  font-size: 0.75em;
 }
 
   header p {
     color: #666;
+    font-size: 1rem;
     margin: 0;
-    text-transform: lowercase;
+    text-align: center;
   }
 
     header a {
-      color: #666;
+      background: #005598;
+      border-radius: 100%;
+      color: #fff;
+      display: inline-block;
+      line-height: 3rem;
+      width: 3rem;
+    }
+
+    header a:hover {
+      background: #000;
+      color: #fff;
     }
 
 footer {
   bottom: 0;
   color: #999;
-  font-size: 0.75em;
+  font-size: 1rem;
   left: 0;
   position: absolute;
   right: 0;
@@ -222,6 +226,21 @@ article {
   article h2,
   article .meta {
     margin-top: 2.25rem;
+  }
+
+  article li::before {
+    left: -2rem;
+    position: absolute;
+    top: 0;
+  }
+
+  article ul li::before {
+    content: "\2022";
+  }
+
+  article dd,
+  article li {
+    margin-left: 2rem;
   }
 
 .kw /* Keyword */ {

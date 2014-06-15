@@ -99,7 +99,7 @@ tagColor tag = '#' : showHex (hash tag `mod` 16777215) ""
 
 config = defaultConfiguration
   { deployCommand = "rsync --checksum -avz \
-                    \_site/* jonas@192.168.11.1:/usr/local/www/jonas/jonaswesterlund.se/"
+                    \_site/* jonas@jonaswesterlund.se:/usr/local/www/jonas/jonaswesterlund.se/"
   }
 
 feedConfiguration = FeedConfiguration

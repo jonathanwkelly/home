@@ -66,6 +66,15 @@ The signature of `(>>=)`{.haskell} tells us that it takes a parameter `m a`{.has
 and a parameter `(a -> m b)`{.haskell}, a function from `a`{.haskell} to `m b`{.haskell}.
 The actual types do not matter, but where the same names are used, the types must be the same.
 
+Currently, you can't quite express this in Java---you need type parameters that themselves take type parameters---but if you could, it would look something like this.
+
+```java
+public interface Monad<M<?>> {
+    public <A> M<A> _return(A value);
+    public <A, B> M<B> bind(M<A> v, Function<A, M<B>> f);
+}
+```
+
 ## The three monad laws
 A monad implementation should obey three laws: *left identity*, *right identity*, and *associativity*.
 They can be defined like this:
