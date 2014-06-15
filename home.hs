@@ -1,10 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import Control.Monad (forM, forM_)
+import Data.Hashable
 import Data.List (intersperse)
 import Data.Maybe (catMaybes)
 import Data.Monoid ((<>), mconcat)
 import Hakyll
+import Numeric (showHex)
 import System.FilePath (takeFileName)
 
 main = hakyllWith config $ do
@@ -91,6 +93,9 @@ tagsFieldWith' getTags' key tags = field key $ \item -> do
     renderLink _   Nothing         = Nothing
     renderLink tag (Just filePath) = Just $
       "<a href=\"" ++ toUrl filePath ++ "\">" ++ tag ++ "</a>"
+
+tagColor :: String -> String
+tagColor tag = '#' : showHex (hash tag `mod` 16777215) ""
 
 config = defaultConfiguration
   { deployCommand = "rsync --checksum -avz \
