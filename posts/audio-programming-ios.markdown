@@ -134,7 +134,7 @@ We will be generating at least 44100 samples per second, so these things add up 
 For these reasons, we will stick to the native format, and enjoy the performance advantage.
 Ideally, the audio processing code should be completely free of floating point, to avoid costly stalls.
 
-## Tips and tricks
+## Tips & tricks
 
 For programmers more experienced in audio synthesis, most of these tricks are likely either obvious or obviously suboptimal.
 I will publish them anyway, in the hope that they will help or at least inspire other newcomers.

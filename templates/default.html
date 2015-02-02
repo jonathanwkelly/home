@@ -11,11 +11,21 @@
 </style>
 
 <header>
-  <p>
-    <abbr title="Jonas Westerlund">
-      <a href="/">JW</a>
-    </abbr>
-  </p>
+  <ul id="nav">
+    <li class="prev">
+    $if(previous)$
+      <a href="$previous$">Previous page</a>
+    $endif$
+    </li>
+    <li class="m">
+      <a href="/">Home</a>
+    </li>
+    <li class="next">
+    $if(next)$
+      <a href="$next$">Next page</a>
+    $endif$
+    </li>
+  </ul>
 </header>
 
 $body$

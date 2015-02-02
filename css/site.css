@@ -1,64 +1,99 @@
 @font-face {
-  font-family: "Source Sans Pro";
+  font-family: "Input Sans";
+  font-style: normal;
+  font-weight: 200;
+  src: local("InputSans ExLight"), local("InputSans-ExtraLight"), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputSans-ExtraLight.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Input Sans";
+  font-style: italic;
+  font-weight: 200;
+  src: local("InputSans ExLightIta”), local("InputSans-ExtraLightItalic”), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputSans-ExtraLightItalic.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Input Sans";
   font-style: normal;
   font-weight: 300;
-  src: local("Source Sans Pro Light"), local("SourceSansPro-Light"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/toadOcfmlt9b38dHJxOBGMVNtom4QlEDNJaqqqzqdSs.woff) format("woff");
+  src: local("InputSans Light"), local("InputSans-Light"), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputSans-Light.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Source Sans Pro"), local("SourceSansPro-Regular"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/ODelI1aHBYDBqgeIAH2zlNHq-FFgoDNV3GTKpHwuvtI.woff) format("woff");
-}
-
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 600;
-  src: local("Source Sans Pro Semibold"), local("SourceSansPro-Semibold"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/toadOcfmlt9b38dHJxOBGCmgpmuQqK2I-L2S9cF65Ek.woff) format("woff");
-}
-
-@font-face {
-  font-family: "Source Sans Pro";
+  font-family: "Input Sans";
   font-style: italic;
   font-weight: 300;
-  src: local("Source Sans Pro Light Italic"), local("SourceSansPro-LightIt"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/fpTVHK8qsXbIeTHTrnQH6H7XMO6S-yJpg1torQFmnv33rGVtsTkPsbDajuO5ueQw.woff) format("woff");
+  src: local("InputSans LightIta"), local("InputSans-LightItalic"), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputSans-LightItalic.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: "Source Sans Pro";
-  font-style: italic;
-  font-weight: 400;
-  src: local("Source Sans Pro Italic"), local("SourceSansPro-It"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/M2Jd71oPJhLKp0zdtTvoM_bce-VcyLJMRR1FC9qWbU8.woff) format("woff");
-}
-
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: italic;
-  font-weight: 600;
-  src: local("Source Sans Pro Semibold Italic"), local("SourceSansPro-SemiboldIt"), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v7/fpTVHK8qsXbIeTHTrnQH6J4LxuTxC3JbLqy8IUt0K1T3rGVtsTkPsbDajuO5ueQw.woff) format("woff");
-}
-
-@font-face {
-  font-family: "Source Code Pro";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Source Code Pro Light"), local("SourceCodePro-Light"), url(//themes.googleusercontent.com/static/fonts/sourcecodepro/v4/leqv3v-yTsJNC7nFznSMqcVNtom4QlEDNJaqqqzqdSs.woff) format("woff");
-}
-
-@font-face {
-  font-family: "Source Code Pro";
+  font-family: "Input Sans";
   font-style: normal;
   font-weight: 400;
-  src: local("Source Code Pro"), local("SourceCodePro-Regular"), url(//themes.googleusercontent.com/static/fonts/sourcecodepro/v4/mrl8jkM18OlOQN8JLgasD9Hq-FFgoDNV3GTKpHwuvtI.woff) format("woff");
+  src: local("InputSans Regular"), local("InputSans-Regular"), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputSans-Regular.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: "Source Code Pro";
+  font-family: "Input Sans";
   font-style: normal;
   font-weight: 500;
-  src: local("Source Code Pro Medium"), local("SourceCodePro-Medium"), url(//themes.googleusercontent.com/static/fonts/sourcecodepro/v4/leqv3v-yTsJNC7nFznSMqbIHYkLmgtPJP77jcqN9P08.woff) format("woff");
+  src: local("InputSans Medium"), local("InputSans-Medium"), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputSans-Medium.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Input Sans";
+  font-style: normal;
+  font-weight: 600;
+  src: local("InputSans Bold”), local("InputSans-Bold”), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputSans-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Input Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("InputSans Black”), local("InputSans-Black”), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputSans-Black.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Input Mono";
+  font-style: normal;
+  font-weight: 200;
+  src: local("InputMono ExLight"), local("InputMono-ExtraLight"), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputMono-ExtraLight.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Input Mono";
+  font-style: italic;
+  font-weight: 200;
+  src: local("InputMono ExLightIta"), local("InputMono-ExtraLightItalic"), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputMono-ExtraLightItalic.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Input Mono";
+  font-style: normal;
+  font-weight: 300;
+  src: local("InputMono Light"), local("InputMono-Light"), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputMono-Light.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Input Mono";
+  font-style: italic;
+  font-weight: 300;
+  src: local("InputMono LightIta"), local("InputMono-LightItalic"), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputMono-LightItalic.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Input Mono";
+  font-style: normal;
+  font-weight: 500;
+  src: local("InputMono Medium"), local("InputMono-Medium"), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputMono-Medium.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Input Mono";
+  font-style: italic;
+  font-weight: 500;
+  src: local("InputMono MediumIta"), local("InputMono-MediumItalic"), url(//dl.dropboxusercontent.com/u/2275898/jonaswesterlund.se/InputMono-MediumItalic.ttf) format("truetype");
 }
 
 .desc {
@@ -87,11 +122,11 @@ html {
 
 body {
   box-sizing: border-box;
-  font: 300 1.375rem/1.75rem "Source Sans Pro", sans-serif;
+  font: 200 1rem/1.75rem "Input Sans", sans-serif;
   margin: 0 auto;
   max-width: 56rem;
   min-height: 100vh;
-  padding-bottom: 6.25rem;
+  padding: 3.5rem 0 6.25rem;
   position: relative;
 }
 
@@ -101,25 +136,17 @@ body {
   }
 }
 
-h1,
-h2,
-footer,
-.meta,
-.posts,
-.all {
-  text-align: center;
-}
-
 h1 {
-  font-size: 2.75rem;
-  font-weight: 300;
-  line-height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 200;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: inherit;
   font-weight: 400;
+  letter-spacing: 0.0625rem;
+  text-transform: uppercase;
 }
 
 dl,
@@ -127,7 +154,7 @@ ol,
 p,
 pre,
 ul {
-  margin: 1.5rem 0;
+  margin: 0.75rem 0 1.5rem 0;
 }
 
 dd,
@@ -166,34 +193,48 @@ strong {
 }
 
 code {
-  font-family: "Source Code Pro", monospace;
+  font-family: "Input Mono", monospace;
 }
 
 pre {
+  margin-left: 1.5rem;
   white-space: pre-wrap;
 }
 
-header {
+#nav {
+  background: #fff;
+  border-bottom: 0.25rem solid #005598;
+  display: table;
+  left: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
 }
 
-  header p {
-    color: #666;
-    font-size: 1rem;
-    margin: 0;
-    text-align: center;
+  #nav li {
+    display: table-cell;
+    font-size: 0.75rem;
+    font-weight: 500;
   }
 
-    header a {
-      background: #005598;
-      border-radius: 100%;
-      color: #fff;
-      display: inline-block;
-      line-height: 3rem;
-      width: 3rem;
+    #nav li {
+      width: 25%;
     }
 
-    header a:hover {
-      background: #000;
+    #nav .m {
+      width: 50%;
+    }
+
+    #nav a {
+      display: block;
+      padding-top: 0.25rem;
+    }
+
+    #nav a:hover {
+      background: #005598;
       color: #fff;
     }
 
@@ -215,17 +256,17 @@ footer {
     }
 
 footer,
-header,
 section {
   padding: 2.25rem;
 }
 
 article {
+  margin-bottom: 5rem;
 }
 
   article h2,
   article .meta {
-    margin-top: 2.25rem;
+    margin-top: 3.5rem;
   }
 
   article li::before {
@@ -243,48 +284,65 @@ article {
     margin-left: 2rem;
   }
 
-.kw /* Keyword */ {
+figure {
+  text-align: center;
+}
+
+/* Keyword */
+.kw {
   color: #5c11a6;
   font-weight: 400;
 }
 
-.dt /* Data type */ {
+/* Data type */
+.dt {
   color: #a6295d;
 }
 
-.dv /* Decimal value */,
-.bn /* Base other-than-ten */,
-.fl /* Float */ {
+/* Decimal value */
+.dv,
+/* Base other-than-ten */
+.bn,
+/* Float */
+.fl {
   color: #14ccba;
 }
 
-.ch /* Char */ {
+/* Char */
+.ch {
   color: #990400;
 }
 
-.st /* String */ {
+/* String */
+.st {
   color: #990400;
 }
 
-.co /* Comment */ {
+/* Comment */
+.co {
   color: #666;
 }
 
-.ot /* Other token */ {
+/* Other token */
+.ot {
   color: #004c19;
 }
 
-.al /* Alert (warning messages) */,
-.er /* Error token */ {
+/* Alert (warning messages) */
+.al,
+/* Error token */
+.er {
   color: #e58f0b;
   font-weight: 400;
 }
 
-.fu /* Function */ {
+/* Function */
+.fu {
   color: #093;
   font-weight: 400;
 }
 
-.re /* Region marker */ {
+/* Region marker */
+.re {
   /* What is that even */
 }

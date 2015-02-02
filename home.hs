@@ -1,38 +1,24 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-import Control.Monad (forM, forM_)
+import Control.Monad (filterM, forM, forM_, liftM)
 import Data.Hashable
-import Data.List (intersperse)
+import Data.List (intersperse, sortBy)
 import Data.Maybe (catMaybes)
 import Data.Monoid ((<>), mconcat)
+import Data.Ord (comparing)
 import Hakyll
 import Numeric (showHex)
 import System.FilePath (takeFileName)
+import System.Locale (defaultTimeLocale)
 
 main = hakyllWith config $ do
-  match ("fonts/**" .||. "img/**" .||. "files/**") $
-    route idRoute >> compile copyFileCompiler
+  match ("img/**" .||. "files/**") $ route idRoute >> compile copyFileCompiler
 
   forM_ ["css/*", "js/*", "templates/*", "pages/*"] . flip match $ compile templateCompiler
 
   tags <- buildTags "posts/*" $ fromCapture "tag/*.html"
 
-  match "posts/*" $ do
-    route   $ setExtension ".html" `composeRoutes` topRoute
-    compile $ pandocCompiler
-      >>= saveSnapshot "content"
-      >>= loadAndApplyTemplate "templates/post.html" (postContext tags)
-      >>= loadAndApplyTemplate "templates/default.html" defaultContext
-
-  create ["posts.html"] $ do
-    route idRoute
-    compile $ do
-      list <- postList id tags "posts/*"
-      let postListContext = constField "title" "All posts" <> constField "posts" list <> defaultContext
-      makeItem ""
-        >>= loadAndApplyTemplate "templates/postlist.html" postListContext
-        >>= loadAndApplyTemplate "templates/default.html"  postListContext
-
+{-
   tagsRules tags $ \tag pattern -> do
     let title = "Posts about " <> tag
     route idRoute
@@ -42,16 +28,29 @@ main = hakyllWith config $ do
       makeItem ""
         >>= loadAndApplyTemplate "templates/postlist.html" tagListContext
         >>= loadAndApplyTemplate "templates/default.html"  tagListContext
+-}
 
-  create ["index.html"] $ do
+  match "posts/*" $ do
+    route   $ setExtension ".html" `composeRoutes` topRoute
+    compile $ pandocCompiler
+      >>= saveSnapshot "content"
+      >>= loadAndApplyTemplate "templates/post.html" (postContext tags)
+      >>= loadAndApplyTemplate "templates/default.html" (postContext tags)
+
+  let indexContext = constField "title" "Jonas Westerlund" <> (postContext tags) <> defaultContext
+  postIndex "posts/*" 4 indexContext
+
+{-  
+  create ["archive.html"] $ do
     route topRoute
     compile $ do
       list <- postList (take 4) tags "posts/*"
       makeItem list
       let indexContext = constField "title" "Index" <> constField "posts" list <> defaultContext
       makeItem ""
-        >>= loadAndApplyTemplate "pages/index.html" indexContext
+        >>= loadAndApplyTemplate "pages/archive.html" indexContext
         >>= loadAndApplyTemplate "templates/default.html" indexContext
+-}
 
   create ["rss.xml"] $ do
     route idRoute
@@ -67,8 +66,6 @@ postList f tags pattern = do
 
 postContext tags = mconcat
   [ modificationTimeField "mtime" "%U"
-  , dateField "date" "%B %e, %Y"
-  , dateField "isoDate" "%Y-%m-%d"
   , tagsFieldWith' getTags "tags" tags
   , defaultContext
   ]
@@ -96,6 +93,62 @@ tagsFieldWith' getTags' key tags = field key $ \item -> do
 
 tagColor :: String -> String
 tagColor tag = '#' : showHex (hash tag `mod` 16777215) ""
+
+paginatePosts :: Pattern -> Int -> (Maybe Int -> Int -> Maybe Int -> [Identifier] -> Rules ()) -> Rules ()
+paginatePosts pattern n rules = do
+  let sortByM :: (Monad m, Ord k) => (a -> m k) -> [a] -> m [a]
+      sortByM f xs   = liftM (map fst . sortBy (comparing snd)) $
+                       mapM (\x -> liftM (\y -> (x, y)) (f x)) xs
+      chronological' = sortByM $ getItemUTC defaultTimeLocale
+      recentFirst'   = liftM reverse . chronological'
+  ids <- recentFirst' =<< filterDrafts =<< getMatches pattern
+  let chunks     = chunksOf n ids
+      indexPages = zip chunks [1..]
+      lastIndex  = length indexPages
+  forM_ indexPages $ \(ps, i) -> let newer = if i > 1         then Just (i - 1) else Nothing
+                                     older = if i < lastIndex then Just (i + 1) else Nothing
+                                 in  rules older i newer ps
+
+postIndex :: Pattern -> Int -> Context String -> Rules ()
+postIndex pattern nPages context =
+  paginatePosts pattern nPages $ \older current newer ids -> do
+      let olderUrl   = fmap indexPageUrl older
+          newerUrl   = fmap indexPageUrl newer
+          identifier = fromFilePath $ drop 1 $ indexPageUrl current
+      create [identifier] $ do
+        route idRoute
+        compile $ do
+          posts <- forM ids $ \postId -> loadSnapshot postId "content"
+          let indexCtx = postsField (return posts) <>
+                postIndexContext olderUrl newerUrl <>
+                context
+        
+          makeItem (indexPageUrl current)
+            >>= loadAndApplyTemplate "templates/postlist.html" indexCtx
+            >>= loadAndApplyTemplate "templates/default.html" indexCtx
+
+chunksOf :: Int -> [a] -> [[a]]
+chunksOf _ [] = []
+chunksOf n xs = (take n xs) : chunksOf n (drop n xs)
+
+postIndexContext :: Maybe FilePath -> Maybe FilePath -> Context String
+postIndexContext prev next = 
+  mconcat $ catMaybes [fmap (constField "previous") prev, fmap (constField "next") next]
+
+indexPageUrl :: Int -> FilePath
+indexPageUrl 1 = "/index.html"
+indexPageUrl i = "/page-" ++ show i ++ ".html"
+
+postsField :: Compiler [Item String] -> Context a
+postsField posts = listField "posts"
+  (teaserField "teaser" "content" <> defaultContext)
+  posts
+
+isNotDraft :: MonadMetadata m => Identifier -> m Bool
+isNotDraft identifier = liftM (/= Just "true") (getMetadataField identifier "draft")
+
+filterDrafts :: MonadMetadata m => [Identifier] -> m [Identifier]
+filterDrafts  = filterM isNotDraft
 
 config = defaultConfiguration
   { deployCommand = "rsync --checksum -avz \

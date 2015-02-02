@@ -1,6 +1,13 @@
 <section>
-  <h2>$title$</h2>
-  <ul class="posts">
-    $posts$
-  </ul>
+  $for(posts)$
+  <article>
+    <h1>
+      <a href="$url$">$title$</a>
+    </h1>
+    $body$
+    <p class="meta">
+      $partial("templates/postmeta.html")$
+    </p>
+  </article>
+  $endfor$
 </section>
